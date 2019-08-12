@@ -1,0 +1,976 @@
+::-webkit-scrollbar {
+  display: none; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scrollbar-width: none; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  line-height: 1.6; }
+  @media only screen and (max-width: 62.5em) {
+    html {
+      font-size: 55%; } }
+  @media only screen and (max-width: 50em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 45%; } }
+  @media only screen and (max-width: 26.3em) {
+    html {
+      font-size: 40%; } }
+  @media only screen and (min-width: 100em) {
+    html {
+      font-size: 100%; } }
+
+body {
+  width: 100vw;
+  height: 100rem; }
+
+.App {
+  width: 100%; }
+
+@keyframes jump {
+  0% {
+    transform: translateY(0); }
+  10% {
+    transform: translateY(-0.5rem); }
+  20% {
+    transform: translateY(0); }
+  60% {
+    transform: translateY(0); }
+  70% {
+    transform: translateY(-0.5rem); }
+  80% {
+    transform: translateY(0); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+    transform: scale(0); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #D0BBAF;
+  height: 8rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  margin-bottom: 5rem;
+  background-color: white; }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      height: 6rem;
+      margin-bottom: 4rem; } }
+  .header__left {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .header__left {
+        flex: 0 0 33%; } }
+    .header__left--link {
+      border-bottom: 1px solid transparent;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.8rem;
+      color: #23102B;
+      cursor: pointer;
+      margin: .5rem;
+      transition: border .3s; }
+      .header__left--link:hover {
+        border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
+      @media only screen and (max-width: 37.5em) {
+        .header__left--link {
+          margin: .2rem;
+          font-size: 1.2rem; } }
+  .header__center {
+    width: 20%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center; }
+    @media only screen and (max-width: 37.5em) {
+      .header__center {
+        width: 33%;
+        flex: auto; } }
+    .header__center--logo {
+      background-color: #D0BBAF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      padding: 1rem 2.5rem;
+      line-height: .9;
+      box-shadow: 0 0.5rem 1rem rgba(103, 54, 51, 0.3);
+      cursor: pointer;
+      transition: background-color .3s; }
+      .header__center--logo:hover {
+        background-color: #c7ad9f; }
+      .header__center--logo-name {
+        font-family: "Darker Grotesque", sans-serif;
+        font-size: 8rem;
+        font-weight: 300;
+        color: #3c2845;
+        text-transform: uppercase;
+        text-shadow: 0.2rem 0.2rem 0.5rem rgba(35, 16, 43, 0.5); }
+        @media only screen and (max-width: 37.5em) {
+          .header__center--logo-name {
+            font-size: 6rem; } }
+      .header__center--logo-sub {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.6rem;
+        letter-spacing: .2rem;
+        font-weight: 300;
+        color: #3c2845; }
+        @media only screen and (max-width: 37.5em) {
+          .header__center--logo-sub {
+            font-size: 2rem; } }
+  .header__right {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .header__right {
+        flex: 0 0 33%;
+        margin-right: 2rem; } }
+    .header__right--user {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: border .3s; }
+      .header__right--user:hover {
+        border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
+        .header__right--user:hover .header__right--user-icon {
+          color: #3c2845; }
+      .header__right--user-icon {
+        font-size: 2.2rem;
+        color: #76687C;
+        transition: color .3s; }
+        @media only screen and (max-width: 37.5em) {
+          .header__right--user-icon {
+            font-size: 1.8rem; } }
+      .header__right--user-text {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.8rem;
+        color: #23102B; }
+        @media only screen and (max-width: 37.5em) {
+          .header__right--user-text {
+            font-size: 1.2rem; } }
+
+.landing {
+  width: 100%;
+  margin-top: 15rem; }
+  .landing__header {
+    line-height: 1.1;
+    margin: 5rem 0; }
+    .landing__header--name {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 10rem;
+      font-weight: 300;
+      text-align: center;
+      text-transform: uppercase;
+      color: #3c2845;
+      text-shadow: 0.3rem 0.3rem 0.5rem rgba(60, 40, 69, 0.7); }
+      @media only screen and (max-width: 37.5em) {
+        .landing__header--name {
+          font-size: 4rem; } }
+    .landing__header--sub {
+      text-align: center;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 300;
+      font-size: 2.4rem; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__header--sub {
+          font-size: 1.8rem; } }
+  .landing__photo {
+    display: flex;
+    justify-content: center;
+    margin: 5rem 2rem; }
+    .landing__photo--img {
+      width: 100%; }
+  .landing__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 5rem 0; }
+    .landing__buttons--btn {
+      display: inline-block;
+      border: none;
+      width: 40%;
+      background-image: linear-gradient(to bottom, #B97C7C, #B97C7C);
+      border-radius: 3px;
+      padding: 2rem 0;
+      color: white;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 3rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0.5rem 2rem rgba(185, 124, 124, 0.6);
+      transition: all .3s; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__buttons--btn {
+          font-size: 2.2rem; } }
+      .landing__buttons--btn:focus {
+        outline: none; }
+      .landing__buttons--btn:hover {
+        background-image: linear-gradient(to bottom, #B97C7C, #b06b6b); }
+  .landing__address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    color: #3c2845; }
+    .landing__address--name {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 4.2rem; }
+    .landing__address--street {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+    .landing__address--city {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+    .landing__address--tel {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: #3c2845;
+      text-decoration: none; }
+      .landing__address--tel:hover {
+        text-decoration: underline; }
+      .landing__address--tel-icon {
+        color: #673633;
+        margin: 1rem;
+        display: inline-block; }
+    .landing__address--email {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      color: #673633;
+      cursor: pointer;
+      text-decoration: none; }
+      .landing__address--email:hover {
+        text-decoration: underline; }
+      .landing__address--email-icon {
+        color: #B97C7C;
+        margin: 1rem;
+        display: inline-block; }
+  .landing__open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem 0; }
+    .landing__open--header {
+      margin: 2rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3rem;
+      font-weight: 300;
+      text-transform: uppercase; }
+    .landing__open--list {
+      display: block;
+      width: 40%;
+      margin: 2rem;
+      list-style: none; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__open--list {
+          width: 65%; } }
+      .landing__open--list-item {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: space-between; }
+        .landing__open--list-item-day {
+          text-transform: uppercase;
+          font-weight: 500; }
+  .landing__reviews {
+    background-color: #3c2845;
+    margin: 5rem 2rem;
+    display: flex;
+    flex-direction: column; }
+    .landing__reviews--header {
+      display: block;
+      margin: 2rem 0;
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 4.5rem;
+      text-transform: uppercase;
+      text-align: center;
+      color: white; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__reviews--header {
+          font-size: 2.5rem; } }
+    .landing__reviews--points {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0; }
+      .landing__reviews--points-amount {
+        padding: .5rem 1.5rem;
+        border: 0.3rem solid #D0BBAF;
+        border-radius: 10%;
+        margin-right: 2rem; }
+        .landing__reviews--points-amount p {
+          font-family: "Darker Grotesque", sans-serif;
+          font-size: 4rem;
+          color: #B97C7C; }
+          @media only screen and (max-width: 37.5em) {
+            .landing__reviews--points-amount p {
+              font-size: 2.5rem; } }
+      .landing__reviews--points-stars {
+        font-size: 4rem;
+        color: #D0BBAF; }
+        @media only screen and (max-width: 37.5em) {
+          .landing__reviews--points-stars {
+            font-size: 2.5rem; } }
+    .landing__reviews--opinion {
+      position: relative;
+      margin: 2rem;
+      padding: 5rem 0; }
+      .landing__reviews--opinion-text {
+        font-family: "Rajdhani", sans-serif;
+        color: #D0BBAF;
+        text-align: center;
+        font-size: 2rem;
+        color: white; }
+      .landing__reviews--opinion-quote {
+        font-size: 5rem;
+        color: rgba(208, 187, 175, 0.9); }
+        .landing__reviews--opinion-quote-1 {
+          position: absolute;
+          bottom: 0;
+          right: 10%; }
+        .landing__reviews--opinion-quote-2 {
+          position: absolute;
+          top: 0;
+          left: 10%; }
+    .landing__reviews--more {
+      text-align: center;
+      color: #B97C7C;
+      text-decoration: none;
+      margin: 2rem 0;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__reviews--more {
+          font-size: 1.8rem; } }
+  .landing__story {
+    margin: 5rem 2rem; }
+    .landing__story--header {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 4rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-align: center; }
+      @media only screen and (max-width: 37.5em) {
+        .landing__story--header {
+          font-size: 2.5rem; } }
+    .landing__story--about {
+      margin: 2rem 0;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem;
+      text-align: center; }
+
+.prices {
+  width: 100%;
+  margin-top: 15rem; }
+  .prices__header {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3c2845;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(60, 40, 69, 0.5); }
+    @media only screen and (max-width: 37.5em) {
+      .prices__header {
+        font-size: 4rem; } }
+  .prices__section {
+    width: 60%;
+    margin: 5rem auto;
+    padding: 0 2rem; }
+    @media only screen and (max-width: 75em) {
+      .prices__section {
+        width: 80%; } }
+    @media only screen and (max-width: 37.5em) {
+      .prices__section {
+        width: 100%; } }
+    .prices__section--header {
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 500;
+      font-size: 4rem;
+      color: #3c2845;
+      text-shadow: 0.3rem 0.3rem 0.5rem rgba(60, 40, 69, 0.5); }
+      @media only screen and (max-width: 37.5em) {
+        .prices__section--header {
+          font-size: 2.8rem; } }
+    .prices__section--list {
+      list-style: none;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .prices__section--list {
+          font-size: 1.8rem; } }
+      .prices__section--list-item {
+        display: flex;
+        justify-content: space-between; }
+
+.appointment {
+  margin-top: 12rem; }
+  .appointment__header {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3c2845;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(60, 40, 69, 0.5); }
+    @media only screen and (max-width: 37.5em) {
+      .appointment__header {
+        font-size: 4rem; } }
+  .appointment__info {
+    margin: 2rem auto;
+    font-family: "Rajdhani", sans-serif;
+    padding: 2rem; }
+    .appointment__info--header {
+      font-size: 4rem;
+      font-weight: 400;
+      color: #23102B; }
+      @media only screen and (max-width: 37.5em) {
+        .appointment__info--header {
+          font-size: 2.5rem; } }
+    .appointment__info--steps {
+      list-style: none;
+      margin: 2rem;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .appointment__info--steps {
+          font-size: 1.8rem; } }
+    .appointment__info--footer {
+      font-size: 2.5rem;
+      font-weight: 500; }
+      @media only screen and (max-width: 37.5em) {
+        .appointment__info--footer {
+          font-size: 1.8rem; } }
+  .appointment__data {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Rajdhani", sans-serif; }
+    .appointment__data--date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem; }
+      .appointment__data--date p {
+        font-size: 3rem;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        color: #3c2845;
+        font-weight: 500; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--date p {
+            font-size: 2rem; } }
+        .appointment__data--date p span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 5rem;
+          height: 5rem;
+          border: 1px solid #D0BBAF;
+          border-radius: 50%;
+          margin: 1rem;
+          background-color: #D0BBAF; }
+      .appointment__data--date label {
+        font-size: 4rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--date label {
+            font-size: 2.5rem; } }
+      .appointment__data--date input {
+        text-align: center;
+        min-width: 50%;
+        padding: 2rem;
+        font-size: 2rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--date input {
+            min-width: 80%; } }
+        .appointment__data--date input:focus {
+          outline: none; }
+    .appointment__data--data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem; }
+      .appointment__data--data p {
+        font-size: 3rem;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        color: #3c2845;
+        font-weight: 500; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--data p {
+            font-size: 2rem; } }
+        .appointment__data--data p span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 5rem;
+          height: 5rem;
+          border: 1px solid #D0BBAF;
+          border-radius: 50%;
+          margin: 1rem;
+          background-color: #D0BBAF; }
+      .appointment__data--data label {
+        font-size: 4rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--data label {
+            font-size: 2.5rem; } }
+      .appointment__data--data input {
+        text-align: center;
+        min-width: 50%;
+        padding: 2rem;
+        font-size: 2rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--data input {
+            min-width: 80%; } }
+        .appointment__data--data input:focus {
+          outline: none; }
+    .appointment__data--confirmation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem; }
+      .appointment__data--confirmation p {
+        font-size: 3rem;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        color: #3c2845;
+        font-weight: 500; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--confirmation p {
+            font-size: 2rem; } }
+        .appointment__data--confirmation p span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 5rem;
+          height: 5rem;
+          border: 1px solid #D0BBAF;
+          border-radius: 50%;
+          margin: 1rem;
+          background-color: #D0BBAF; }
+      .appointment__data--confirmation label {
+        font-size: 4rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--confirmation label {
+            font-size: 2.5rem; } }
+      .appointment__data--confirmation input {
+        text-align: center;
+        min-width: 50%;
+        padding: 2rem;
+        font-size: 2rem; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--confirmation input {
+            min-width: 80%; } }
+        .appointment__data--confirmation input:focus {
+          outline: none; }
+      .appointment__data--confirmation-each {
+        font-size: 3rem;
+        font-weight: 400; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--confirmation-each {
+            font-size: 2rem; } }
+    .appointment__data--buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem; }
+    .appointment__data--btn {
+      width: 20%;
+      padding: 2rem 0;
+      border: none;
+      border-radius: 3px;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 3rem;
+      background-color: #23102B;
+      color: white;
+      cursor: pointer;
+      transition: background-color .3s; }
+      .appointment__data--btn:hover {
+        background-color: #3c2845; }
+      @media only screen and (max-width: 37.5em) {
+        .appointment__data--btn {
+          width: 30%;
+          font-size: 2rem; } }
+
+#next {
+  margin: 0 0 0 auto; }
+
+.contact {
+  width: 100%;
+  margin-top: 15rem; }
+  .contact__header {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3c2845;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(60, 40, 69, 0.5); }
+    @media only screen and (max-width: 37.5em) {
+      .contact__header {
+        font-size: 4rem; } }
+  .contact__address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    color: #3c2845; }
+    .contact__address--name {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 4.2rem; }
+    .contact__address--street {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+    .contact__address--city {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem; }
+    .contact__address--tel {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: #3c2845;
+      text-decoration: none; }
+      .contact__address--tel:hover {
+        text-decoration: underline; }
+      .contact__address--tel-icon {
+        color: #673633;
+        margin: 1rem;
+        display: inline-block; }
+    .contact__address--email {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      color: #673633;
+      cursor: pointer;
+      text-decoration: none; }
+      .contact__address--email:hover {
+        text-decoration: underline; }
+      .contact__address--email-icon {
+        color: #B97C7C;
+        margin: 1rem;
+        display: inline-block; }
+  .contact__map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem; }
+    .contact__map--image {
+      width: 80%;
+      margin: 2rem;
+      position: relative;
+      width: 100%;
+      height: 40vw;
+      background-image: linear-gradient(to right, rgba(118, 104, 124, 0.5), rgba(118, 104, 124, 0.5)), url(../img/hair.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; }
+      .contact__map--image-header {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .contact__map--image-header h1 {
+          font-family: "Darker Grotesque", sans-serif;
+          font-size: 16rem;
+          font-weight: 300;
+          color: #f6f2ef;
+          text-shadow: 2rem 2rem 2rem rgba(208, 187, 175, 0.3);
+          text-transform: uppercase;
+          text-align: center;
+          line-height: 1; }
+          @media only screen and (max-width: 62.5em) {
+            .contact__map--image-header h1 {
+              font-size: 12rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .contact__map--image-header h1 {
+              font-size: 8rem; } }
+        .contact__map--image-header h3 {
+          font-family: "Rajdhani", sans-serif;
+          font-size: 4rem;
+          font-weight: 300;
+          color: #f6f2ef;
+          text-shadow: 2rem 2rem 2rem rgba(208, 187, 175, 0.3);
+          text-transform: uppercase;
+          text-align: center;
+          line-height: 1; }
+          @media only screen and (max-width: 62.5em) {
+            .contact__map--image-header h3 {
+              font-size: 3rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .contact__map--image-header h3 {
+              font-size: 2.5rem; } }
+    .contact__map--frame {
+      width: 60vw;
+      height: 45vw; }
+      @media only screen and (max-width: 37.5em) {
+        .contact__map--frame {
+          width: 90vw;
+          height: 67.5vw; } }
+
+.gallery {
+  margin-top: 12rem; }
+  .gallery__header {
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3c2845;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(60, 40, 69, 0.5); }
+    @media only screen and (max-width: 37.5em) {
+      .gallery__header {
+        font-size: 4rem; } }
+  .gallery__album {
+    margin: 5rem auto;
+    border-radius: 3px;
+    padding: 2rem;
+    width: 80%;
+    background-image: linear-gradient(to bottom, rgba(208, 187, 175, 0.1), #d0bbaf);
+    box-shadow: 0 0 5rem rgba(208, 187, 175, 0.5);
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 1fr 50% 1fr; }
+    @media only screen and (max-width: 37.5em) {
+      .gallery__album {
+        width: 90%; } }
+    .gallery__album--header {
+      grid-column: 1/-1;
+      grid-row: 1/2;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 4rem;
+      font-weight: 300;
+      text-align: center;
+      text-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      padding: 1rem; }
+    .gallery__album--haircut {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .3s;
+      cursor: pointer; }
+      .gallery__album--haircut-1 {
+        grid-column: 1/2;
+        grid-row: 2/3; }
+      .gallery__album--haircut-2 {
+        grid-column: 2/3;
+        grid-row: 2/ span 2; }
+      .gallery__album--haircut-3 {
+        grid-column: 3/4;
+        grid-row: 2/3; }
+      .gallery__album--haircut-4 {
+        grid-column: 1/2;
+        grid-row: 3/4; }
+      .gallery__album--haircut-5 {
+        grid-column: 3/4;
+        grid-row: 3/5; }
+      .gallery__album--haircut-5 {
+        grid-column: 1/2;
+        grid-row: 4/5; }
+      .gallery__album--haircut-6 {
+        grid-column: 3/4;
+        grid-row: 3/4; }
+      .gallery__album--haircut:hover {
+        transform: scale(1.05); }
+      .gallery__album--haircut img {
+        width: 100%; }
+  .gallery__full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .gallery__full--close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 4rem;
+      font-weight: 300;
+      color: #D0BBAF;
+      cursor: pointer; }
+    .gallery__full img {
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+      margin: 0 auto; }
+
+.footer {
+  margin: 5rem 0 0 0;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: .5rem;
+  background-color: #D0BBAF; }
+  .footer__service--header {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 2rem;
+    color: #3c2845; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__service--header {
+        font-size: 1.6rem; } }
+  .footer__service--list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0; }
+    .footer__service--list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.8rem;
+      color: #3c2845;
+      cursor: pointer; }
+      .footer__service--list-item span {
+        border-bottom: 1px solid transparent;
+        transition: border .3s; }
+      .footer__service--list-item:hover span {
+        border-bottom: 1px solid #76687C; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__service--list-item {
+          font-size: 1.4rem; } }
+  .footer__social--header {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 2rem;
+    color: #3c2845; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__social--header {
+        font-size: 1.6rem; } }
+  .footer__social--list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0; }
+    .footer__social--list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.8rem;
+      color: #3c2845;
+      cursor: pointer; }
+      .footer__social--list-item span {
+        border-bottom: 1px solid transparent;
+        transition: border .3s; }
+      .footer__social--list-item:hover span {
+        border-bottom: 1px solid #76687C; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social--list-item {
+          font-size: 1.4rem; } }
+    .footer__social--list-facebook {
+      color: blue;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social--list-facebook {
+          font-size: 1.8rem; } }
+    .footer__social--list-instagram {
+      color: #3c2845;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social--list-instagram {
+          font-size: 1.8rem; } }
+    .footer__social--list-twitter {
+      color: #3333ff;
+      font-size: 2.5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__social--list-twitter {
+          font-size: 1.8rem; } }
+  .footer__legal--header {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Darker Grotesque", sans-serif;
+    font-size: 2rem;
+    color: #3c2845; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__legal--header {
+        font-size: 1.6rem; } }
+  .footer__legal--list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0; }
+    .footer__legal--list-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.8rem;
+      color: #3c2845;
+      cursor: pointer; }
+      .footer__legal--list-item span {
+        border-bottom: 1px solid transparent;
+        transition: border .3s; }
+      .footer__legal--list-item:hover span {
+        border-bottom: 1px solid #76687C; }
+      @media only screen and (max-width: 37.5em) {
+        .footer__legal--list-item {
+          font-size: 1.4rem; } }
+
+.legal {
+  width: 100%;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
+  padding: 2rem; }
+  .legal h1 {
+    padding-top: 15rem;
+    color: #3c2845;
+    text-align: center;
+    text-shadow: 0.5rem 0.5rem 1rem rgba(208, 187, 175, 0.3);
+    text-transform: uppercase; }

@@ -1,0 +1,110 @@
+.appointment{
+
+	margin-top: 12rem;
+
+	&__header{
+		@include sectionHeader
+	}
+	&__info{
+		margin:2rem auto;
+		font-family: $font-rajdhani;
+		padding:2rem;
+
+		&--header{
+
+			font-size: 4rem;
+			font-weight: 400;
+			color:$color-secondary-dark;
+			
+			@include respond(s){
+				font-size: 2.5rem;
+			}
+			
+
+		}
+		&--steps{
+			list-style: none;
+			margin:2rem;
+			font-size: 2.5rem;
+
+			@include respond(s){
+				font-size: 1.8rem;
+			}
+
+			&-each{
+
+			}
+		}
+
+		&--footer{
+			font-size: 2.5rem;
+			font-weight: 500;
+
+			@include respond(s){
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	&__data{
+		min-height:50vh;
+		display:flex;
+		flex-direction: column;
+		
+		font-family: $font-rajdhani;
+
+		&--date{
+			@include formData
+		}
+
+		&--data{
+			@include formData
+		}
+		&--confirmation{
+			@include formData
+
+			&-each{
+				font-size: 3rem;
+				font-weight: 400;
+				@include respond(s){
+					font-size: 2rem;
+				}
+				span{
+
+				}
+			}
+		}
+
+		&--buttons{
+			display:flex;
+			justify-content: space-between;
+			padding:0 2rem;
+		}
+
+		&--btn{
+			// display:block;
+			width:20%;
+			padding:2rem 0;
+			border:none;
+			border-radius: 3px;
+			font-family: $font-rajdhani;
+			font-size: 3rem;
+			background-color: $color-secondary-dark;
+			color:white;
+			cursor:pointer;
+			transition:background-color .3s;
+
+			&:hover{
+				background-color: $color-secondary;
+			}
+
+			@include respond(s){
+				width:30%;
+				font-size: 2rem;
+			}
+		}
+	}
+}
+#next{
+	margin:0 0 0 auto;
+}

@@ -1,0 +1,58 @@
+.prices{
+	width:100%;
+	margin-top:15rem;
+
+	&__header{
+		@include sectionHeader
+	}
+
+	&__section{
+
+		width: 60%;
+		margin:5rem auto;
+		padding:0 2rem;
+
+		@include respond(xl){
+			width:80%;
+		}
+
+		@include respond(s){
+			
+			width:100%;
+		}
+
+		&--header{
+			font-family: $font-rajdhani;
+			font-weight: 500;
+			font-size: 4rem;
+			color:$color-secondary;
+			text-shadow: .3rem .3rem .5rem rgba($color-secondary,.5);
+
+
+			@include respond(s){
+				font-size: 2.8rem;
+			}
+		}
+
+		&--list{
+
+			list-style: none;
+			font-family: $font-rajdhani;
+			font-size: 2.5rem;
+
+			@include respond(s){
+				
+				font-size: 1.8rem;
+			}
+
+			&-item{
+				
+				display:flex;
+				justify-content: space-between;
+				span{
+					
+				}
+			}
+		}
+	}
+}
