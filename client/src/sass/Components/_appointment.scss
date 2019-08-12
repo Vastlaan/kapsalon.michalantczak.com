@@ -63,6 +63,14 @@
 		&--confirmation{
 			@include formData
 
+			&-header{
+				font-size: 6rem !important; 
+
+				@include respond(s){
+					font-size: 4rem !important;
+				}
+			}
+
 			&-each{
 				font-size: 3rem;
 				font-weight: 400;

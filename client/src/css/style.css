@@ -88,7 +88,7 @@ body {
     .header__left--link {
       border-bottom: 1px solid transparent;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #23102B;
       cursor: pointer;
       margin: .5rem;
@@ -98,7 +98,7 @@ body {
       @media only screen and (max-width: 37.5em) {
         .header__left--link {
           margin: .2rem;
-          font-size: 1.2rem; } }
+          font-size: 1.8rem; } }
   .header__center {
     width: 20%;
     position: absolute;
@@ -153,32 +153,20 @@ body {
       .header__right {
         flex: 0 0 33%;
         margin-right: 2rem; } }
-    .header__right--user {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
+    .header__right--link {
       border-bottom: 1px solid transparent;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.2rem;
+      color: #23102B;
+      cursor: pointer;
+      margin: .5rem;
       transition: border .3s; }
-      .header__right--user:hover {
+      .header__right--link:hover {
         border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
-        .header__right--user:hover .header__right--user-icon {
-          color: #3c2845; }
-      .header__right--user-icon {
-        font-size: 2.2rem;
-        color: #76687C;
-        transition: color .3s; }
-        @media only screen and (max-width: 37.5em) {
-          .header__right--user-icon {
-            font-size: 1.8rem; } }
-      .header__right--user-text {
-        font-family: "Rajdhani", sans-serif;
-        font-size: 1.8rem;
-        color: #23102B; }
-        @media only screen and (max-width: 37.5em) {
-          .header__right--user-text {
-            font-size: 1.2rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .header__right--link {
+          margin: .2rem;
+          font-size: 1.8rem; } }
 
 .landing {
   width: 100%;
@@ -196,15 +184,15 @@ body {
       text-shadow: 0.3rem 0.3rem 0.5rem rgba(60, 40, 69, 0.7); }
       @media only screen and (max-width: 37.5em) {
         .landing__header--name {
-          font-size: 4rem; } }
+          font-size: 6rem; } }
     .landing__header--sub {
       text-align: center;
       font-family: "Rajdhani", sans-serif;
       font-weight: 300;
-      font-size: 2.4rem; }
+      font-size: 2.6rem; }
       @media only screen and (max-width: 37.5em) {
         .landing__header--sub {
-          font-size: 1.8rem; } }
+          font-size: 2.2rem; } }
   .landing__photo {
     display: flex;
     justify-content: center;
@@ -604,6 +592,11 @@ body {
             min-width: 80%; } }
         .appointment__data--confirmation input:focus {
           outline: none; }
+      .appointment__data--confirmation-header {
+        font-size: 6rem !important; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--confirmation-header {
+            font-size: 4rem !important; } }
       .appointment__data--confirmation-each {
         font-size: 3rem;
         font-weight: 400; }

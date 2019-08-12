@@ -8,7 +8,7 @@ const Header = () =>{
 		<header className='header'>
 			<div className='header__left'>
 				<p className='header__left--link' onClick={()=>window.location.href='/afspraak'}>Afspraak</p>
-				<p className='header__left--link' onClick={()=>window.location.href="/prijzen"}>Prijzen</p>
+				
 				<p className='header__left--link' onClick={()=>window.location.href="/contact"}>Contact</p>
 			</div>
 			<div className='header__center'>
@@ -19,10 +19,9 @@ const Header = () =>{
 				
 			</div>
 			<div className='header__right'>
-				<div className='header__right--user' onClick={()=>window.location.href="/gallery"}>
-					<FaImages className="header__right--user-icon" />
-					<p className="header__right--user-text">Galerij</p>
-				</div>
+				<p className='header__right--link' onClick={()=>window.location.href="/prijzen"}>Prijzen</p>		
+				<p className="header__right--link"  onClick={()=>window.location.href="/gallery"}>Galerij</p>
+				
 			</div>
 		</header>
 		)

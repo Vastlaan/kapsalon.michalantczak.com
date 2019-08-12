@@ -122,7 +122,7 @@ const Appointment = () =>{
 				
 					:	
 						(<div className='appointment__data--confirmation'>
-							<label>Bevestiging</label>
+							<label className='appointment__data--confirmation-header'>Bevestiging</label>
 							<h3 className='appointment__data--confirmation-each'><span>Date:</span> {date}</h3>
 							<h3 className='appointment__data--confirmation-each'><span>Naam:</span> {name}</h3>
 							<h3 className='appointment__data--confirmation-each'><span>Email:</span> {email}</h3>
@@ -132,18 +132,18 @@ const Appointment = () =>{
 				}
 				{button===1?
 					<div className='appointment__data--buttons'>
-						<button className='appointment__data--btn' id="next" onClick={()=>next()}>Volgende</button>
+						<button className='appointment__data--btn' id="next" key="next" onClick={()=>next()}>Volgende</button>
 					</div>
 					:
 					button===2?
 					<div className='appointment__data--buttons'>
-						<button className='appointment__data--btn' id="back" onClick={()=>previous()}>Terug</button>
-						<button className='appointment__data--btn' id="next" onClick={()=>next()}>Volgende</button>
+						<button className='appointment__data--btn' id="back" key="back" onClick={()=>previous()}>Terug</button>
+						<button className='appointment__data--btn' id="next" key="next" onClick={()=>next()}>Volgende</button>
 					</div>
 					:
 					<div className='appointment__data--buttons'>
-						<button className='appointment__data--btn' id="back" onClick={()=>previous()}>Terug</button>
-						<button className='appointment__data--btn' onClick={()=>send()}>Bevestig</button>
+						<button className='appointment__data--btn' id="back" key="back" onClick={()=>previous()}>Terug</button>
+						<button className='appointment__data--btn' key="confirm" onClick={()=>send()}>Bevestig</button>
 					</div>
 					
 				}
