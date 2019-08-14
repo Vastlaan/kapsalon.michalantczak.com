@@ -59,7 +59,7 @@ const Landing = () =>{
 					</li>
 					<li className='landing__open--list-item'>
 						<span className='landing__open--list-item-day'>Zondag</span>
-						<span className='landing__open--list-item-hour'>09:00 - 18:00</span>
+						<span className='landing__open--list-item-hour'>gesloten</span>
 					</li>		
 				</ul>
 

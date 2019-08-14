@@ -76,7 +76,8 @@ body {
   @media only screen and (max-width: 37.5em) {
     .header {
       height: 6rem;
-      margin-bottom: 4rem; } }
+      margin-bottom: 4rem;
+      padding: .2rem; } }
   .header__left {
     flex: 0 0 20%;
     display: flex;
@@ -92,12 +93,14 @@ body {
       color: #23102B;
       cursor: pointer;
       margin: .5rem;
-      transition: border .3s; }
+      transition: border .3s;
+      margin-right: 2rem; }
       .header__left--link:hover {
         border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
       @media only screen and (max-width: 37.5em) {
         .header__left--link {
           margin: .2rem;
+          margin-right: .9rem;
           font-size: 1.8rem; } }
   .header__center {
     width: 20%;
@@ -152,7 +155,7 @@ body {
     @media only screen and (max-width: 37.5em) {
       .header__right {
         flex: 0 0 33%;
-        margin-right: 2rem; } }
+        margin-right: .5rem; } }
     .header__right--link {
       border-bottom: 1px solid transparent;
       font-family: "Rajdhani", sans-serif;
@@ -160,12 +163,14 @@ body {
       color: #23102B;
       cursor: pointer;
       margin: .5rem;
-      transition: border .3s; }
+      transition: border .3s;
+      margin-right: 2rem; }
       .header__right--link:hover {
         border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
       @media only screen and (max-width: 37.5em) {
         .header__right--link {
           margin: .2rem;
+          margin-right: 1rem;
           font-size: 1.8rem; } }
 
 .landing {
@@ -474,6 +479,31 @@ body {
       flex-direction: column;
       align-items: center;
       margin: 2rem; }
+      .appointment__data--date-calendar {
+        display: flex;
+        justify-content: center;
+        width: 50%; }
+        @media only screen and (max-width: 37.5em) {
+          .appointment__data--date-calendar {
+            width: 100%; } }
+        .appointment__data--date-calendar-picker {
+          width: 100%;
+          padding: 0;
+          font-size: 2.7rem; }
+          @media only screen and (max-width: 37.5em) {
+            .appointment__data--date-calendar-picker {
+              font-size: 2rem; } }
+      .appointment__data--date-times {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-gap: 1rem;
+        font-size: 3rem; }
+        .appointment__data--date-times div {
+          cursor: pointer;
+          padding: .5rem;
+          text-align: center; }
+          .appointment__data--date-times div:hover {
+            background-color: #D0BBAF; }
       .appointment__data--date p {
         font-size: 3rem;
         width: 100%;
