@@ -17,74 +17,56 @@ const Gallery = () =>{
 
 			<h1 className='gallery__header'>Galerij</h1>
 
-			<div className='gallery__album'>
-				<div className='gallery__album--header'>
-					Mannen
+			<div className='gallery__men'>
+
+				<div className='gallery__men--main'>
+					<img 
+						src={Haircut2} 
+						alt='haircut' 
+						className='gallery__men--main-photo'
+					/>
 				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-l'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut2)
-						)}}
-				>
-					<img src={Haircut2} alt='haircut' />
+
+				<div className='gallery__men--collection'>
+
+					<div className='gallery__men--collection-photo'>
+						<img 
+							src={Haircut2} 
+							alt='haircut' 
+							
+						/>
+					</div>
+					<div className='gallery__men--collection-photo'>
+						<img 
+							src={Haircut4} 
+							alt='haircut' 
+							
+						/>
+					</div>
+					<div className='gallery__men--collection-photo'>
+						<img 
+							src={Haircut1} 
+							alt='haircut' 
+							
+						/>
+					</div>
+					<div className='gallery__men--collection-photo'>
+						<img 
+							src={Haircut3} 
+							alt='haircut' 
+							
+						/>
+					</div>
+					<div className='gallery__men--collection-photo'>
+						<img 
+							src={Haircut5} 
+							alt='haircut' 
+							
+						/>
+					</div>
+					
 				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-2'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut5)
-						)}}
-				>
-					<img src={Haircut5} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-3'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut1)
-						)}}
-				>
-					<img src={Haircut1} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-4'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut3)
-						)}}
-				>
-					<img src={Haircut3} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-5'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut4)
-						)}}
-				>
-					<img src={Haircut4} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-6'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut4)
-						)}}
-				>
-					<img src={Haircut4} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-7'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut1)
-						)}}
-				>
-					<img src={Haircut1} alt='haircut' />
-				</div>
-				<div className='gallery__album--haircut gallery__album--haircut-8'
-					onClick={()=>{return(
-						setView(true),
-						setPhoto(Haircut2)
-						)}}
-				>
-					<img src={Haircut2} alt='haircut' />
-				</div>
+				
 			</div>
 
 			<div className='gallery__album'>

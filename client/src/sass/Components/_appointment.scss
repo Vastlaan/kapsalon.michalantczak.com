@@ -81,6 +81,10 @@
 				grid-gap: 1rem;
 				font-size: 3rem;
 
+				@include respond(s){
+					font-size: 1.8rem;
+				}
+
 				div{
 					cursor:pointer;
 					padding:.5rem;

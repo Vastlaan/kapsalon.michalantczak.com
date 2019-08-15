@@ -23,13 +23,13 @@ class Appointment extends React.Component {
 	}
 
 	isDateValid = () =>{
-		if(!this.state.selectedDay){
+		if(this.state.selectedDay===null ||this.state.selectedDay===undefined ||this.state.selectedDay===""){
 			return false
 		}
 		return true
 	}
 	isTimeValid = () =>{
-		if(!this.state.time){
+		if(this.state.time===null || this.state.time===undefined || this.state.time===""){
 			return false
 		}
 		return true
@@ -37,21 +37,21 @@ class Appointment extends React.Component {
 
 	isNameValid = () =>{
 		const nameFieldValue = document.querySelector('#name').value
-		if(nameFieldValue==="null" || nameFieldValue===undefined || nameFieldValue===""){
+		if(nameFieldValue===null || nameFieldValue===undefined || nameFieldValue===""){
 			return false
 		}
 		return true
 	}
 	isEmailValid = () =>{
 		const emailFieldValue = document.querySelector('#email').value
-		if(emailFieldValue==="null" || emailFieldValue===undefined || emailFieldValue===""){
+		if(emailFieldValue===null || emailFieldValue===undefined || emailFieldValue===""){
 			return false
 		}
 		return true
 	}
 	isPhoneValid = () =>{
 		const phoneFieldValue = document.querySelector('#phone').value
-		if(phoneFieldValue==="null" || phoneFieldValue===undefined || phoneFieldValue===""){
+		if(phoneFieldValue===null || phoneFieldValue===undefined || phoneFieldValue===""){
 			return false
 		}
 		return true
@@ -77,7 +77,7 @@ class Appointment extends React.Component {
 				return null
 			}
 		}else if(this.state.step===1){
-			if(this.isTimeValid){
+			if(this.isTimeValid()){
 
 				return this.setState({
 					button:2,
@@ -122,16 +122,15 @@ class Appointment extends React.Component {
 		}
 	}
 
-	handleDayClick(day, { selected }) {
-	    if (selected) {
-	      // Unselect the day if already selected
-	      this.setState({ selectedDay: undefined });
-	      return;
-	    }
-	    this.setState({ 
-	    	selectedDay: day,
-	    	date: day.toLocaleDateString()
-	     });
+	handleDayClick(day, modifiers={}) {
+
+		if(modifiers.disabled){	
+			return
+		}
+		this.setState({
+			selectedDay: modifiers.selected?undefined:day,
+			date: modifiers.selected?this.state.date:day.toLocaleDateString()
+		})
 	}
 
 	send = () =>{
@@ -186,7 +185,10 @@ class Appointment extends React.Component {
 							<div className='appointment__data--date-calendar'>
 						        <DayPicker
 						        	className='appointment__data--date-calendar-picker'
-						        	disabledDays={{ daysOfWeek: [0] }}
+						        	disabledDays={{ 
+						        		daysOfWeek: [0],
+						        		before: new Date()
+						        	}}
 						          	onDayClick={this.handleDayClick}
 						          	selectedDays={this.state.selectedDay}
 						        />
