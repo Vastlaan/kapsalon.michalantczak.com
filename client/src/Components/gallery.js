@@ -21,6 +21,8 @@ const Gallery = () =>{
 
 			<div className='gallery__album'>
 
+				<h1 className='gallery__album--header'>Mannen</h1>
+
 				<div className='gallery__album--main'>
 					<img 
 						src={menMainPhoto} 
@@ -76,7 +78,7 @@ const Gallery = () =>{
 			</div>
 
 			<div className='gallery__album'>
-
+				<h1 className='gallery__album--header'>Vrouwen</h1>
 				<div className='gallery__album--main'>
 					<img 
 						src={womenMainPhoto} 
