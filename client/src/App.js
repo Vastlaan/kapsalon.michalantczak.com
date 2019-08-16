@@ -7,7 +7,6 @@ import Prices from './Components/prices.js'
 import Appointment from './Components/appointment.js'
 import Contact from './Components/contact.js'
 import Gallery from './Components/gallery.js'
-import Galeria from './Components/testGallery.js'
 import Footer from './Components/footer.js'
 import Legal from './Components/legal.js'
 
