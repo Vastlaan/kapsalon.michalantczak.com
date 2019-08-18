@@ -4,6 +4,9 @@ import React from 'react';
 import DayPicker from 'react-day-picker';	//for date selection
 import 'react-day-picker/lib/style.css';
 
+import DateFormat from 'dateformat';
+
+
 class Appointment extends React.Component {
 
 	constructor(props) {
@@ -124,12 +127,14 @@ class Appointment extends React.Component {
 
 	handleDayClick(day, modifiers={}) {
 
+		const date = DateFormat(day,"dd.mm.yyyy");
+
 		if(modifiers.disabled){	
 			return
 		}
 		this.setState({
-			selectedDay: modifiers.selected?undefined:day,
-			date: modifiers.selected?this.state.date:day.toLocaleDateString()
+			selectedDay: modifiers.selected? undefined : date,
+			date: modifiers.selected? this.state.date : date
 		})
 	}
 
