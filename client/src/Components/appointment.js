@@ -34,8 +34,8 @@ class Appointment extends React.Component {
 
 	componentWillMount(){
 		//get already booked appointments
-		fetch('/api/appointments').
-			then(res=>res.json())
+		fetch('/api/appointments')
+			.then(res=>res.json())
 			.then(data=>this.setState({
 				appointments: data
 			}))
@@ -223,7 +223,7 @@ class Appointment extends React.Component {
 
 	render() {
 		
-	 	const { date, time, name, email, phone, step, button, appointments, confirmation, confirmationValues } = this.state
+	 	const { date, time, name, email, phone, step, button, confirmation, confirmationValues } = this.state
 	return(
 		
 		<div className='appointment'>

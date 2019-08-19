@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import {FaTimes} from 'react-icons/fa'
+import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Haircut11 from '../img/haircut-1_1.png'
 import Haircut12 from '../img/haircut-1_2.png'
 import Haircut13 from '../img/haircut-1_3.png'
@@ -20,6 +20,62 @@ const Gallery = () =>{
 	const [ fullPhoto, setPhoto ] = useState(Haircut11)
 	const [menMainPhoto, setMenMainPhoto] = useState(Haircut11)
 	const [womenMainPhoto, setWomenMainPhoto] = useState(Haircut21)
+	const [positionOfPhoto, setPositionOfPhoto] = useState(1)
+	const [maxPositions, setMaxPositions] = useState(6)
+
+
+	const menPhotoCollection = [Haircut11, Haircut12, Haircut13, Haircut14, Haircut15, Haircut16 ]
+	const womenPhotoCollection = [Haircut21, Haircut22, Haircut23, Haircut24, Haircut25, Haircut26 ]
+
+	const previousMainPhoto = (photo) =>{
+
+		if(menPhotoCollection.includes(photo)){
+			const i = menPhotoCollection.indexOf(photo)
+			const maxIndexNumber = menPhotoCollection.length -1
+			if(i===0){
+				setPositionOfPhoto(menPhotoCollection.length)
+				return setPhoto(menPhotoCollection[maxIndexNumber])
+			}else{
+				setPositionOfPhoto(i)
+				return setPhoto(menPhotoCollection[i-1])
+			}
+		}else{
+			const i = womenPhotoCollection.indexOf(photo)
+			const maxIndexNumber = womenPhotoCollection.length -1
+			if(i===0){
+				setPositionOfPhoto(womenPhotoCollection.length)
+				return setPhoto(womenPhotoCollection[maxIndexNumber])
+			}else{
+				setPositionOfPhoto(i)
+				return setPhoto(womenPhotoCollection[i-1])
+			}
+		}
+	}
+
+	const nextMainPhoto = (photo) =>{
+
+		if(menPhotoCollection.includes(photo)){
+			const i = menPhotoCollection.indexOf(photo)
+			const maxIndexNumber = menPhotoCollection.length -1
+			if(i===maxIndexNumber){
+				setPositionOfPhoto(1)
+				return setPhoto(menPhotoCollection[0])
+			}else{
+				setPositionOfPhoto(i+2)
+				return setPhoto(menPhotoCollection[i+1])
+			}
+		}else{
+			const i = womenPhotoCollection.indexOf(photo)
+			const maxIndexNumber = womenPhotoCollection.length -1
+			if(i===maxIndexNumber){
+				setPositionOfPhoto(1)
+				return setPhoto(womenPhotoCollection[0])
+			}else{
+				setPositionOfPhoto(i+2)
+				return setPhoto(womenPhotoCollection[i+1])
+			}
+		}
+	}
 
 	return(
 		<div className='gallery'>
@@ -35,60 +91,28 @@ const Gallery = () =>{
 						src={menMainPhoto} 
 						alt='haircut' 
 						className='gallery__album--main-photo'
-						onClick={()=>{return(
-						setView(true),
-						setPhoto(menMainPhoto)
-						)}}
+						onClick={()=>{
+						setView(true)
+						setPositionOfPhoto(menPhotoCollection.indexOf(menMainPhoto)+1)
+						setMaxPositions(menPhotoCollection.length)
+						return setPhoto(menMainPhoto)
+						}}
 					/>
 				</div>
 
 				<div className='gallery__album--collection'>
-
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut11} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut11)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut12} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut12)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut13} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut13)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut14} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut14)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut15} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut15)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut16} 
-							alt='haircut' 
-							onClick={()=>setMenMainPhoto(Haircut16)}
-						/>
-					</div>
-					
+					{menPhotoCollection.map((photo,i)=>{
+						return(
+							<div className='gallery__album--collection-photo'  key={`Men${i}`}>
+								<img 
+									src={photo} 
+									alt='haircut' 
+									onClick={()=>setMenMainPhoto(photo)}
+								/>
+							</div>
+							)
+					})}
 				</div>
-				
 			</div>
 
 			<div className='gallery__album'>
@@ -98,67 +122,51 @@ const Gallery = () =>{
 						src={womenMainPhoto} 
 						alt='haircut' 
 						className='gallery__album--main-photo'
-						onClick={()=>{return(
-						setView(true),
-						setPhoto(womenMainPhoto)
-						)}}
+						onClick={()=>{
+						setView(true)
+						setPositionOfPhoto(womenPhotoCollection.indexOf(womenMainPhoto)+1)
+						setMaxPositions(womenPhotoCollection.length)
+						return setPhoto(womenMainPhoto)
+						}}
 					/>
 				</div>
 
 				<div className='gallery__album--collection'>
-
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut21} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut21)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut22} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut22)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut23} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut23)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut24} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut24)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut25} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut25)}
-						/>
-					</div>
-					<div className='gallery__album--collection-photo'>
-						<img 
-							src={Haircut26} 
-							alt='haircut' 
-							onClick={()=>setWomenMainPhoto(Haircut26)}
-						/>
-					</div>
+					{womenPhotoCollection.map((photo,i)=>{
+						return(
+							<div className='gallery__album--collection-photo' key={`Women${i}`}>
+								<img 
+									src={photo} 
+									alt='haircut' 
+									onClick={()=>setWomenMainPhoto(photo)}
+								/>
+							</div>
+							)
+					})}
+				
 				</div>
 				
 			</div>
 
 			{viewFullPhoto?
 				<div className='gallery__full'>
+
+					<div className='gallery__full--count'>
+						{positionOfPhoto}/{maxPositions}
+					</div>
+
 					<FaTimes className='gallery__full--close'
 						onClick={()=>setView(false)}
 					/>
+
 					<img src={fullPhoto} alt='haircut' />
+
+					<div className='gallery__full--previous' onClick={()=>previousMainPhoto(fullPhoto)}>
+						<FaChevronLeft />
+					</div>
+					<div className='gallery__full--next' onClick={()=>nextMainPhoto(fullPhoto)}>
+						<FaChevronRight />
+					</div>
 				</div>
 				:
 				null}
