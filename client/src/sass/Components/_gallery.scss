@@ -21,9 +21,15 @@
 
 		&--header{
 			font-family: $font-rajdhani;
-			font-size: 3rem;
+			font-size: 5rem;
 			font-weight: 400;
 			color:$color-secondary-dark;
+			text-shadow: .5rem .5rem 1rem rgba(0,0,0,.8);
+			z-index: 79;
+
+			@include respond(s){
+				font-size: 3rem;
+			}
 		}
 
 		&--main{
@@ -36,22 +42,87 @@
 			align-items: center;
 			cursor:pointer;
 			transition:all .2s;
+			position:relative;
+
+			&::after{
+				display:block;
+				content:"";
+				width:100%;
+				height:100%;
+				position:absolute;
+				top:-30%;
+				left:-30%;
+				border:1px solid black;
+				z-index: -1;
+				border-radius: 3px;
+				box-shadow: -1rem -1rem 1rem rgba($color-secondary-dark,.3);
+				background-color: rgba($color-primary-light,.3);
+				transform:rotate(5deg);
+
+				@include respond(l){
+					top:20%;
+					left:20%
+				}
+
+				@include respond(m){
+					top:-15%;
+					left:-15%
+				}
+
+				@include respond(s){
+					display:none;
+				}
+			}
+			&::before{
+				display:block;
+				content:"";
+				width:100%;
+				height:100%;
+				position:absolute;
+				top:30%;
+				left:30%;
+				border:1px solid black;
+				z-index: -1;
+				border-radius: 3px;
+				box-shadow: 1rem 1rem 1rem rgba($color-secondary-dark,.3);
+				background-color: rgba($color-primary-light,.6);
+				transform:rotate(-5deg);
+
+				@include respond(l){
+					top:20%;
+					left:20%
+				}
+
+				@include respond(m){
+					top:15%;
+					left:15%
+				}
+
+				@include respond(s){
+					display:none;
+				}
+			}
+
+			p{
+				display:none;
+				width:100%;
+				text-align: center;
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+				font-family: $font-rajdhani;
+				font-size: 3rem;
+				color:white;
+				pointer-events: none;
+				z-index: 89;
+			}
 
 			&:hover{
 				filter: contrast(110%);
 				position:relative;
-				&::before{
-					content:"View Full Screen";
-					width:100%;
-					text-align: center;
-					position:absolute;
-					top:50%;
-					left:50%;
-					transform:translate(-50%,-50%);
-					font-family: $font-rajdhani;
-					font-size: 3rem;
-					color:white;
-					pointer-events: none;
+				p{
+					display:block;
 				}
 			}
 
@@ -62,6 +133,7 @@
 				border:2px solid $color-secondary-dark;
 				border-radius: 3px;
 				position:relative;
+				z-index: 79;
 				
 			}
 		}
@@ -75,6 +147,7 @@
 			//box-shadow: 0 0 5rem rgba($color-primary-light,.4);
 			max-width:100%;
 			overflow-x:scroll;
+			z-index: 79;
 
 			&-photo{
 				//max-width:10%;
@@ -104,7 +177,7 @@
 		left:0;
 		width:100vw;
 		height:100vh;
-		z-index: 15;
+		z-index: 95;
 		background-color: rgba(0,0,0,.9);
 		display: flex;
 		justify-content: center;

@@ -79,7 +79,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 91;
   margin-bottom: 5rem;
   background-color: white;
   transition: background-color 1s; }
@@ -876,9 +876,14 @@ body {
         width: 100%; } }
     .gallery__album--header {
       font-family: "Rajdhani", sans-serif;
-      font-size: 3rem;
+      font-size: 5rem;
       font-weight: 400;
-      color: #23102B; }
+      color: #23102B;
+      text-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.8);
+      z-index: 79; }
+      @media only screen and (max-width: 37.5em) {
+        .gallery__album--header {
+          font-size: 3rem; } }
     .gallery__album--main {
       height: 50vh;
       max-width: 100%;
@@ -888,36 +893,92 @@ body {
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: all .2s; }
+      transition: all .2s;
+      position: relative; }
+      .gallery__album--main::after {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -30%;
+        left: -30%;
+        border: 1px solid black;
+        z-index: -1;
+        border-radius: 3px;
+        box-shadow: -1rem -1rem 1rem rgba(35, 16, 43, 0.3);
+        background-color: rgba(208, 187, 175, 0.3);
+        transform: rotate(5deg); }
+        @media only screen and (max-width: 62.5em) {
+          .gallery__album--main::after {
+            top: 20%;
+            left: 20%; } }
+        @media only screen and (max-width: 50em) {
+          .gallery__album--main::after {
+            top: -15%;
+            left: -15%; } }
+        @media only screen and (max-width: 37.5em) {
+          .gallery__album--main::after {
+            display: none; } }
+      .gallery__album--main::before {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        border: 1px solid black;
+        z-index: -1;
+        border-radius: 3px;
+        box-shadow: 1rem 1rem 1rem rgba(35, 16, 43, 0.3);
+        background-color: rgba(208, 187, 175, 0.6);
+        transform: rotate(-5deg); }
+        @media only screen and (max-width: 62.5em) {
+          .gallery__album--main::before {
+            top: 20%;
+            left: 20%; } }
+        @media only screen and (max-width: 50em) {
+          .gallery__album--main::before {
+            top: 15%;
+            left: 15%; } }
+        @media only screen and (max-width: 37.5em) {
+          .gallery__album--main::before {
+            display: none; } }
+      .gallery__album--main p {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 3rem;
+        color: white;
+        pointer-events: none;
+        z-index: 89; }
       .gallery__album--main:hover {
         filter: contrast(110%);
         position: relative; }
-        .gallery__album--main:hover::before {
-          content: "View Full Screen";
-          width: 100%;
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-family: "Rajdhani", sans-serif;
-          font-size: 3rem;
-          color: white;
-          pointer-events: none; }
+        .gallery__album--main:hover p {
+          display: block; }
       .gallery__album--main-photo {
         max-width: 100%;
         max-height: 50vh;
         box-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
         border: 2px solid #23102B;
         border-radius: 3px;
-        position: relative; }
+        position: relative;
+        z-index: 79; }
     .gallery__album--collection {
       display: flex;
       justify-content: flex-start;
       flex-wrap: nowrap;
       padding: 1rem;
       max-width: 100%;
-      overflow-x: scroll; }
+      overflow-x: scroll;
+      z-index: 79; }
       .gallery__album--collection-photo {
         border: 2px solid black;
         height: 10vh;
@@ -935,7 +996,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 15;
+    z-index: 95;
     background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: center;

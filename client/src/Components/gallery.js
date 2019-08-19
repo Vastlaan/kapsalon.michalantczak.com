@@ -98,6 +98,7 @@ const Gallery = () =>{
 						return setPhoto(menMainPhoto)
 						}}
 					/>
+					<p>View Full Screen</p>
 				</div>
 
 				<div className='gallery__album--collection'>
@@ -129,6 +130,7 @@ const Gallery = () =>{
 						return setPhoto(womenMainPhoto)
 						}}
 					/>
+					<p>View Full Screen</p>
 				</div>
 
 				<div className='gallery__album--collection'>

@@ -14,7 +14,6 @@ const getAppointments = (req,res) =>{
 		if(err){
 			throw err
 		}
-		console.log(results.rows)
 		if(results.rows){
 			return res.status(200).json(results.rows)
 		}else{
