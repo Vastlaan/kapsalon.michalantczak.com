@@ -1,6 +1,5 @@
 import React from 'react';
-// import DatePicker from 'react-datepicker';	//only for time selection
-// import "react-datepicker/dist/react-datepicker.css";
+import {FaTimes} from 'react-icons/fa';
 import DayPicker from 'react-day-picker';	//for date selection
 import 'react-day-picker/lib/style.css';
 
@@ -13,16 +12,33 @@ class Appointment extends React.Component {
 	    super(props);
 	    this.handleDayClick = this.handleDayClick.bind(this);
 	    this.state = {
+	    	//values related to creating appointment
 	    	date: null,
 	    	name:null,
 	    	email: null,
 	    	phone:null,
 	    	time:null,
-
+	    	//values related to existing appointments
+	    	hours: [],
+	    	appointments:null,
+	    	//values related to moving forward or backwards the form
 	    	button: 1,
 	    	step: 0,
+	    	//values related to displaing confirmation window
+	    	confirmation: false,
+	    	confirmationValues: {},
+	    	//value of selected day from react-day-picker calendar
 	      	selectedDay: undefined
 	    };
+	}
+
+	componentWillMount(){
+		//get already booked appointments
+		fetch('/api/appointments').
+			then(res=>res.json())
+			.then(data=>this.setState({
+				appointments: data
+			}))
 	}
 
 	isDateValid = () =>{
@@ -61,10 +77,13 @@ class Appointment extends React.Component {
 	}
 
 	selectTime = (e) =>{
+		//reset background-color of every time
 		document.querySelectorAll('.appointment__data--date-times-each').forEach(element=>{
 			element.style.backgroundColor=""
 		})
+		//highlight background-color of selected time
 		e.target.style.backgroundColor="#B97C7C"
+		//set up selected time value in state
 		this.setState({time:e.target.innerHTML})
 	}
 
@@ -125,16 +144,22 @@ class Appointment extends React.Component {
 		}
 	}
 
-	handleDayClick(day, modifiers={}) {
-
+	async handleDayClick(day, modifiers={}) {
+		//all possible times
+		const times = ["09:00", "09:15", "09:30", "09:45","10:00", "10:15", "10:30", "10:45","11:00", "11:15", "11:30", "11:45","12:00", "12:15", "12:30", "12:45","13:00", "13:15", "13:30", "13:45","14:00", "14:15", "14:30", "14:45","15:00", "15:15", "15:30", "15:45","16:00", "16:15", "16:30", "16:45","17:00", "17:15", "17:30", "17:45"]
+		//forcing date format
 		const date = DateFormat(day,"dd.mm.yyyy");
-
+		//if date tried to be selected is disable don't return any value
 		if(modifiers.disabled){	
 			return
 		}
-		this.setState({
-			selectedDay: modifiers.selected? undefined : date,
+		await this.setState({
+			selectedDay: modifiers.selected? undefined : day,
 			date: modifiers.selected? this.state.date : date
+		})
+
+		await this.setState({
+			hours: this.getTime(times)
 		})
 	}
 
@@ -150,7 +175,7 @@ class Appointment extends React.Component {
 			phone
 		}
 
-		fetch('/api/appointment', {
+		fetch('/api/create_appointment', {
 			method: "POST",
 			credentials: "include",
 			headers: {
@@ -159,14 +184,46 @@ class Appointment extends React.Component {
 			body: JSON.stringify(formData)
 		})
 			.then(req=>req.json())
-			.then(data=>console.log(data))
+			.then(async data=>{
+				//first set up data for confirmation
+				await this.setState({
+					confirmationValues:{
+						date: data.date,
+						time: data.time,
+						name: data.name,
+						email: data.email,
+						phone: data.phone
+					}
+				})
+				await this.setState({
+					confirmation:true
+				})
+			})
+	}
+
+	//returns array of avaliable times
+	getTime =(timeArr)=>{
+		
+		//if match with choosen date returns appointments array on that date otherwise empty array []
+		const appointmentsFromChosenDate = this.state.appointments.filter(a=>{
+			return this.state.date===a.date
+		})
+
+		//get all times from appointments which match the choosen date and store them as array
+		const hoursFromChosenDate = appointmentsFromChosenDate.map(a=>a.time)
+		
+		//reduce array of all possible times of values from array of times alredy choosen (not avaliable) and return it as result of getTime function
+		//in lines 244-250 of this code the result will be mapped and will display only times avaliable
+		return timeArr.filter(each=>{
+			return !hoursFromChosenDate.includes(each)
+		})
 	}
 
 
 
 	render() {
-		const times = ["09:00", "09:15", "09:30", "09:45","10:00", "10:15", "10:30", "10:45","11:00", "11:15", "11:30", "11:45","12:00", "12:15", "12:30", "12:45","13:00", "13:15", "13:30", "13:45","14:00", "14:15", "14:30", "14:45","15:00", "15:15", "15:30", "15:45","16:00", "16:15", "16:30", "16:45","17:00", "17:15", "17:30", "17:45"]
-	 	const { date, time, name, email, phone, step, button } = this.state
+		
+	 	const { date, time, name, email, phone, step, button, appointments, confirmation, confirmationValues } = this.state
 	return(
 		
 		<div className='appointment'>
@@ -206,7 +263,8 @@ class Appointment extends React.Component {
 							<p>Stap <span>2</span></p>
 							<label>Kies een tijd:</label>
 							<div className='appointment__data--date-times'>
-							{times.map((each,i)=>{
+							{this.state.hours.map((each,i)=>{
+
 								return(
 									<div 
 										className='appointment__data--date-times-each' 
@@ -259,12 +317,36 @@ class Appointment extends React.Component {
 					<div className='appointment__data--buttons'>
 						<button className='appointment__data--btn' id="back" key="back" onClick={()=>this.previous()}>Terug</button>
 						<button className='appointment__data--btn' key="confirm" onClick={()=>this.send()}>Bevestig</button>
-					</div>
-					
+					</div>				
 				}
-				
-				
 			</div>
+			{
+				confirmation?
+				<div className='appointment__confirmation'>
+					<div className='appointment__confirmation--close' onClick={()=>window.location.href='/afspraak'}>
+						<FaTimes className='appointment__confirmation--close-icon'/>
+					</div>
+					<h1 className='appointment__confirmation--header'>Bevestiging</h1>
+					{
+						confirmationValues.date
+							?
+							(
+								<ul className='appointment__confirmation--content'>
+									<li>Datum: {confirmationValues.date}</li>
+									<li>Tijd: {confirmationValues.time}</li>
+									<li>Naam: {confirmationValues.name}</li>
+									<li>Email: {confirmationValues.email}</li>
+									<li>Tel: {confirmationValues.phone}</li>
+								</ul>
+							)
+							:null
+					}
+					<button className='appointment__confirmation--button' onClick={()=>window.location.href='/afspraak'}>Close</button>
+				</div>
+				:null
+
+			}
+			
 		</div>
 		)
 	}

@@ -8,7 +8,7 @@ const Footer = () =>{
 			<div className='footer__service'>
 				<h3 className='footer__service--header'>KlantenService</h3>
 				<ul className='footer__service--list'>
-					<li className='footer__service--list-item' onClick={()=>window.location.href='/gallery'}><span>Galerij</span></li>
+					<li className='footer__service--list-item' onClick={()=>window.location.href='/afspraak'}><span>Afspraak</span></li>
 					<li className='footer__service--list-item' onClick={()=>window.location.href='/contact'}><span>Contact</span></li>
 					<li className='footer__service--list-item' onClick={()=>window.location.href='/prijzen'}><span>Prijzen</span></li>
 				</ul>

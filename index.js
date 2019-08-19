@@ -1,14 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const db = require('./queries.js')
 
 const app = express()
 
 app.use(bodyParser.json())
 
-app.post('/api/appointment', (req,res)=>{
-	console.log(req.body)
-	res.status(200).json("Ok")
-})
+app.get('/api/appointments', db.getAppointments)
+
+app.post('/api/create_appointment', db.createAppointment)
+
 
 if(process.env.NODE_ENV==="production"){
 
