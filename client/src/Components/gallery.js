@@ -154,11 +154,11 @@ const Gallery = () =>{
 			{viewFullPhoto?
 				<div 
 					className='gallery__full' 
-					onMouseDown={(event)=>{
+					onTouchStart={(event)=>{
 						console.log(event.clientX)
 						setMousePosition(event.clientX)
 					}}
-					onMouseUp={(event)=>{
+					onTouchEnd={(event)=>{
 						if(event.clientX>mousePosition){
 							previousMainPhoto(fullPhoto)
 						}else if(event.clientX<mousePosition){
