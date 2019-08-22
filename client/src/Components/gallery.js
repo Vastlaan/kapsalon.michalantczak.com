@@ -155,13 +155,14 @@ const Gallery = () =>{
 				<div 
 					className='gallery__full' 
 					onTouchStart={(event)=>{
-						console.log(event.clientX)
-						setMousePosition(event.clientX)
+						// console.log(event.touches[0].clientX)
+						setMousePosition(event.touches[0].clientX)
 					}}
 					onTouchEnd={(event)=>{
-						if(event.clientX>mousePosition){
+						// console.log(event.changedTouches[0].clientX)
+						if(event.changedTouches[0].clientX>mousePosition){
 							previousMainPhoto(fullPhoto)
-						}else if(event.clientX<mousePosition){
+						}else if(event.changedTouches[0].clientX<mousePosition){
 							nextMainPhoto(fullPhoto)
 						}
 					}}
