@@ -22,6 +22,7 @@ const Gallery = () =>{
 	const [womenMainPhoto, setWomenMainPhoto] = useState(Haircut21)
 	const [positionOfPhoto, setPositionOfPhoto] = useState(1)
 	const [maxPositions, setMaxPositions] = useState(6)
+	const [mousePosition, setMousePosition] = useState(undefined)
 
 
 	const menPhotoCollection = [Haircut11, Haircut12, Haircut13, Haircut14, Haircut15, Haircut16 ]
@@ -151,7 +152,20 @@ const Gallery = () =>{
 			</div>
 
 			{viewFullPhoto?
-				<div className='gallery__full'>
+				<div 
+					className='gallery__full' 
+					onMouseDown={(event)=>{
+						console.log(event.clientX)
+						setMousePosition(event.clientX)
+					}}
+					onMouseUp={(event)=>{
+						if(event.clientX>mousePosition){
+							previousMainPhoto(fullPhoto)
+						}else if(event.clientX<mousePosition){
+							nextMainPhoto(fullPhoto)
+						}
+					}}
+				>
 
 					<div className='gallery__full--count'>
 						{positionOfPhoto}/{maxPositions}
