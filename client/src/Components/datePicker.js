@@ -22,11 +22,15 @@ export default class DatePicker extends React.Component{
   }
 
   render() {
+     const disabledDays = {
+      daysOfWeek: [0, 6]
+    };
     return (
       <div>
         <DayPicker
           onDayClick={this.handleDayClick}
           selectedDays={this.state.selectedDay}
+          disabledDays={[disabledDays]}
         />
       </div>
     );

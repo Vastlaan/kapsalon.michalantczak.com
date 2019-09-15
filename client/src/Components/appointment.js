@@ -247,10 +247,10 @@ class Appointment extends React.Component {
 							<div className='appointment__data--date-calendar'>
 						        <DayPicker
 						        	className='appointment__data--date-calendar-picker'
-						        	disabledDays={{ 
-						        		daysOfWeek: [0],
-						        		before: new Date()
-						        	}}
+						        	disabledDays={[ 
+						        		{daysOfWeek: [0]},
+						        		{before: new Date()}
+						        	]}
 						          	onDayClick={this.handleDayClick}
 						          	selectedDays={this.state.selectedDay}
 						        />
