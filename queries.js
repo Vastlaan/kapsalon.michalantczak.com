@@ -5,8 +5,9 @@ const parse = require('pg-connection-string').parse;
 let pool
 
 if(process.env.NODE_ENV==='production'){
+	const connectionString = `${process.env.DATABASE_URL}`
 	pool = new Pool({
-		connectionString: parse(process.env.DATABASE_URL)
+		connectionString: parse(connectionString)
 	})
 }else{
 	pool = new Pool({
