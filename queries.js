@@ -6,9 +6,7 @@ let pool
 
 if(process.env.NODE_ENV==='production'){
 	const connectionString = parse(process.env.DATABASE_URL)
-	pool = new Pool({
-		connectionString
-	})
+	pool = new Pool(connectionString)
 }else{
 	pool = new Pool({
 		user:keys.DATABASE_USER,
