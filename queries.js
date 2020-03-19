@@ -1,13 +1,23 @@
 const Pool = require('pg').Pool
 const keys = require('./config/keys')
+const parse = require('pg-connection-string').parse;
 
-const pool = new Pool({
-	user:keys.DATABASE_USER,
-	host:keys.DATABASE_HOST,
-	database: keys.DATABASE_NAME,
-	password: keys.DATABASE_SECRET,
-	port:keys.DATABASE_PORT
-})
+let pool
+
+if(process.env.NODE_ENV==='production'){
+	pool = new Pool({
+		connectionString: parse(process.env.DATABASE_URL)
+	})
+}else{
+	pool = new Pool({
+		user:keys.DATABASE_USER,
+		host:keys.DATABASE_HOST,
+		database: keys.DATABASE_NAME,
+		password: keys.DATABASE_SECRET,
+		port:keys.DATABASE_PORT
+	})
+}
+
 
 const getAppointments = (req,res) =>{
 	pool.query('SELECT date, time FROM appointments ORDER BY date ASC;', (err,results)=>{
