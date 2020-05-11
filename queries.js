@@ -17,6 +17,8 @@ if(process.env.NODE_ENV==='production'){
 	})
 }
 
+// to create table in database use:
+//create table appointments (id serial primary key, date varchar (15), time varchar (10), name varchar (100),email varchar (100), phone varchar (100) );
 
 const getAppointments = (req,res) =>{
 	pool.query('SELECT date, time FROM appointments ORDER BY date ASC;', (err,results)=>{

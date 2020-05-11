@@ -1,256 +1,272 @@
-.landing{
+.landing {
+    width: 100%;
+    margin-top: 15rem;
 
-	width:100%;
-	margin-top:15rem;
-	
-	&__header{
-		line-height: 1.1;
-		margin:5rem 0;
+    &__background {
+        background-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+            ),
+            url("../img/salon.png");
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+    }
 
-		&--name{
-			font-family: $font-grotesque;
-			font-size: 10rem;
-			font-weight: 300;
-			text-align: center;
-			text-transform: uppercase;
-			color:$color-secondary;
-			text-shadow: .3rem .3rem .5rem rgba($color-secondary,.7);
+    &__header {
+        line-height: 1.1;
+        margin: 5rem 0;
 
-			@include respond(s){
-				font-size: 6rem;
-			}
+        &--name {
+            font-family: $font-grotesque;
+            font-size: 10rem;
+            font-weight: 300;
+            text-align: center;
+            text-transform: uppercase;
+            color: snow;
+            text-shadow: 0.3rem 0.3rem 0.5rem rgba($color-secondary, 0.7);
 
-		}
+            @include respond(s) {
+                font-size: 6rem;
+            }
+        }
 
-		&--sub{
-			text-align: center;
-			font-family: $font-rajdhani;
-			font-weight: 300;
-			font-size: 2.6rem;
+        &--sub {
+            text-align: center;
+            font-family: $font-rajdhani;
+            font-weight: 300;
+            font-size: 2.6rem;
+            color: snow;
 
-			@include respond(s){
-				font-size: 2.2rem;
-			}
-		}
-	}
+            @include respond(s) {
+                font-size: 2.2rem;
+            }
+        }
+    }
 
-	&__photo{
-		display:flex;
-		justify-content: center;
-		margin:5rem 2rem;
+    // &__photo {
+    //     display: flex;
+    //     justify-content: center;
+    //     margin: 5rem 2rem;
 
-		&--img{
-			width:100%;
+    //     &--img {
+    //         width: 100%;
+    //     }
+    // }
 
-		}
-	}
+    &__buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        margin: 5rem 0;
 
-	&__buttons{
-		width:100%;
-		display: flex;
-		justify-content: space-between;
-		padding:2rem;
-		margin:5rem 0;
-		
-		&--btn{
-			display:inline-block;
-			border:none;
-			width:40%;
-			background-image: linear-gradient(to bottom, $color-primary, $color-primary);
-			border-radius: 3px;
-			padding: 2rem 0;
-			color:white;
-			font-family: $font-rajdhani;
-			font-size: 3rem;
-			text-transform: uppercase;
-			cursor:pointer;
-			box-shadow: 0 .5rem 2rem rgba($color-primary,.6);
-			transition:all .3s;
+        &--btn {
+            display: inline-block;
+            border: none;
+            width: 40%;
+            background-image: linear-gradient(
+                to bottom,
+                $color-primary,
+                $color-primary
+            );
+            border-radius: 3px;
+            padding: 2rem 0;
+            color: white;
+            font-family: $font-rajdhani;
+            font-size: 3rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0.5rem 2rem rgba($color-primary, 0.6);
+            transition: all 0.3s;
 
-			@include respond(s){
-				font-size: 2.2rem;
-			}
+            @include respond(s) {
+                font-size: 2.2rem;
+            }
 
-			&:focus{
-				outline:none;
-			}
+            &:focus {
+                outline: none;
+            }
 
-			&:hover{
-				background-image:linear-gradient(to bottom, $color-primary, darken($color-primary,5%));
-			}
-		}
-	}
+            &:hover {
+                background-image: linear-gradient(
+                    to bottom,
+                    $color-primary,
+                    darken($color-primary, 5%)
+                );
+            }
+        }
+    }
 
-	@include contactStyles(2rem)
+    @include contactStyles(2rem);
 
-	&__open{
-		display:flex;
-		flex-direction: column;
-		align-items: center;
-		margin: 5rem 0;
+    &__address {
+        color: snow;
 
-		&--header{
-			
-			margin:2rem;
-			font-family: $font-garamond;
-			font-size: 3rem;
-			font-weight: 300;
-			text-transform: uppercase;
-		}
+        & > * {
+            color: snow !important;
+        }
+    }
 
-		&--list{
-			display: block;
-			width:40%;
-			margin:2rem;
-			list-style: none;
+    &__open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5rem 0;
 
-			@include respond(s){
-				width:65%;
-			}
+        &--header {
+            margin: 2rem;
+            font-family: $font-garamond;
+            font-size: 3rem;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
 
-			&-item{
-				font-family: $font-rajdhani;
-				font-size: 2.5rem;
-				display:flex;
-				justify-content: space-between;
+        &--list {
+            display: block;
+            width: 40%;
+            margin: 2rem;
+            list-style: none;
 
-				&-day{
-					text-transform: uppercase;
-					font-weight: 500;
-				}
+            @include respond(s) {
+                width: 65%;
+            }
 
-				&-hour{
+            &-item {
+                font-family: $font-rajdhani;
+                font-size: 2.5rem;
+                display: flex;
+                justify-content: space-between;
 
-				}
-			}
-		}
-	}
+                &-day {
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
 
-	&__reviews{
-		background-color: $color-secondary;
-		margin: 5rem 2rem;
-		display:flex;
-		flex-direction: column;
+                &-hour {
+                }
+            }
+        }
+    }
 
+    &__reviews {
+        background-color: $color-secondary;
+        margin: 5rem 2rem;
+        display: flex;
+        flex-direction: column;
 
-		&--header{
-			display:block;
-			margin:2rem 0;
-			font-family: $font-grotesque;
-			font-size: 4.5rem;
-			text-transform: uppercase;
-			text-align: center;
-			color:white;
+        &--header {
+            display: block;
+            margin: 2rem 0;
+            font-family: $font-grotesque;
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: white;
 
-			@include respond(s){
-				font-size: 2.5rem;
-			}
-		}
+            @include respond(s) {
+                font-size: 2.5rem;
+            }
+        }
 
-		&--points{
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin: 2rem 0;
+        &--points {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
 
-			&-amount{
-				padding:.5rem 1.5rem;
-				border:.3rem solid $color-primary-light;
-				border-radius: 10%;
-				margin-right: 2rem;
+            &-amount {
+                padding: 0.5rem 1.5rem;
+                border: 0.3rem solid $color-primary-light;
+                border-radius: 10%;
+                margin-right: 2rem;
 
-				p{
-					font-family: $font-grotesque;
-					font-size: 4rem;
-					color:$color-primary;
+                p {
+                    font-family: $font-grotesque;
+                    font-size: 4rem;
+                    color: $color-primary;
 
-					@include respond(s){
-						font-size: 2.5rem
-					}
-				}
-			}
+                    @include respond(s) {
+                        font-size: 2.5rem;
+                    }
+                }
+            }
 
-			&-stars{
-				font-size: 4rem;
-				color:$color-primary-light;
+            &-stars {
+                font-size: 4rem;
+                color: $color-primary-light;
 
-				@include respond(s){
-					font-size: 2.5rem;
-				}
+                @include respond(s) {
+                    font-size: 2.5rem;
+                }
+            }
+        }
 
-			}
-		}
+        &--opinion {
+            position: relative;
+            margin: 2rem;
+            padding: 5rem 0;
 
-		&--opinion{
+            &-text {
+                font-family: $font-rajdhani;
+                color: $color-primary-light;
+                text-align: center;
+                font-size: 2rem;
+                color: white;
+            }
 
-			position:relative;
-			margin:2rem;
-			padding:5rem 0;
+            &-quote {
+                font-size: 5rem;
+                color: rgba($color-primary-light, 0.9);
 
-			&-text{
-				font-family: $font-rajdhani;
-				color:$color-primary-light;
-				text-align: center;
-				font-size: 2rem;
-				color:white;
-			}
+                &-1 {
+                    position: absolute;
+                    bottom: 0;
+                    right: 10%;
+                }
+                &-2 {
+                    position: absolute;
+                    top: 0;
+                    left: 10%;
+                }
+            }
+        }
 
-			&-quote{
+        &--more {
+            text-align: center;
+            color: $color-primary;
+            text-decoration: none;
+            margin: 2rem 0;
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
 
-				font-size: 5rem;
-				color: rgba($color-primary-light,.9);
+            @include respond(s) {
+                font-size: 1.8rem;
+            }
+        }
+    }
 
-				&-1{
-					position:absolute;
-					bottom:0;
-					right:10%;
-				}
-				&-2{
-					position:absolute;
-					top:0;
-					left:10%;
-				}
-				
-			}
-		}
+    &__story {
+        margin: 5rem 2rem;
 
-		&--more{
+        &--header {
+            font-family: $font-grotesque;
+            font-size: 4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-align: center;
 
-			text-align: center;
-			color:$color-primary;
-			text-decoration: none;
-			margin:2rem 0;
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
+            @include respond(s) {
+                font-size: 2.5rem;
+            }
+        }
 
-			@include respond(s){
-				font-size: 1.8rem;
-			}
-		}
-	}
-
-	&__story{
-		margin:5rem 2rem;
-
-		&--header{
-			font-family: $font-grotesque;
-			font-size: 4rem;
-			font-weight: 500;
-			text-transform: uppercase;
-			text-align: center;
-
-			@include respond(s){
-				font-size: 2.5rem;
-			}
-
-		}
-
-		&--about{
-			margin:2rem 0;
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			text-align: center;
-
-		}
-	}
+        &--about {
+            margin: 2rem 0;
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+    }
 }
