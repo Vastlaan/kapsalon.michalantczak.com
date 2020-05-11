@@ -4,6 +4,8 @@ const db = require("./queries.js");
 
 const app = express();
 
+console.log(process.env.NODE_ENV);
+
 app.use(bodyParser.json());
 
 app.get("/api/appointments", db.getAppointments);
