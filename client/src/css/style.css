@@ -87,7 +87,7 @@ body {
     .header {
       height: 6rem;
       margin-bottom: 4rem;
-      padding: .2rem; } }
+      padding: 0.2rem; } }
   .header__left {
     flex: 0 0 20%;
     display: flex;
@@ -102,15 +102,15 @@ body {
       font-size: 2.2rem;
       color: #23102B;
       cursor: pointer;
-      margin: .5rem;
-      transition: border .3s;
+      margin: 0.5rem;
+      transition: border 0.3s;
       margin-right: 2rem; }
       .header__left--link:hover {
         border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
       @media only screen and (max-width: 37.5em) {
         .header__left--link {
-          margin: .2rem;
-          margin-right: .9rem;
+          margin: 0.2rem;
+          margin-right: 0.9rem;
           font-size: 1.8rem; } }
   .header__center {
     width: 20%;
@@ -132,12 +132,15 @@ body {
       align-items: center;
       border-radius: 3px;
       padding: 1rem 2.5rem;
-      line-height: .9;
+      line-height: 0.9;
       box-shadow: 0 0.5rem 1rem rgba(103, 54, 51, 0.3);
       cursor: pointer;
-      transition: background-color .3s; }
+      transition: background-color 0.3s; }
       .header__center--logo:hover {
         background-color: #c7ad9f; }
+      @media only screen and (max-width: 26.3em) {
+        .header__center--logo {
+          padding: 0.75rem 1.5rem; } }
       .header__center--logo-name {
         font-family: "Darker Grotesque", sans-serif;
         font-size: 8rem;
@@ -151,7 +154,7 @@ body {
       .header__center--logo-sub {
         font-family: "Cormorant Garamond", serif;
         font-size: 2.6rem;
-        letter-spacing: .2rem;
+        letter-spacing: 0.2rem;
         font-weight: 300;
         color: #3c2845; }
         @media only screen and (max-width: 37.5em) {
@@ -165,21 +168,21 @@ body {
     @media only screen and (max-width: 37.5em) {
       .header__right {
         flex: 0 0 33%;
-        margin-right: .5rem; } }
+        margin-right: 0.5rem; } }
     .header__right--link {
       border-bottom: 1px solid transparent;
       font-family: "Rajdhani", sans-serif;
       font-size: 2.2rem;
       color: #23102B;
       cursor: pointer;
-      margin: .5rem;
-      transition: border .3s;
+      margin: 0.5rem;
+      transition: border 0.3s;
       margin-right: 2rem; }
       .header__right--link:hover {
         border-bottom: 1px solid rgba(118, 104, 124, 0.7); }
       @media only screen and (max-width: 37.5em) {
         .header__right--link {
-          margin: .2rem;
+          margin: 0.2rem;
           margin-right: 1rem;
           font-size: 1.8rem; } }
 
@@ -464,25 +467,16 @@ body {
     font-family: "Rajdhani", sans-serif;
     padding: 2rem; }
     .appointment__info--header {
-      font-size: 4rem;
+      font-size: 2.5rem;
       font-weight: 400;
       color: #23102B; }
-      @media only screen and (max-width: 37.5em) {
-        .appointment__info--header {
-          font-size: 2.5rem; } }
     .appointment__info--steps {
       list-style: none;
       margin: 2rem;
-      font-size: 2.5rem; }
-      @media only screen and (max-width: 37.5em) {
-        .appointment__info--steps {
-          font-size: 1.8rem; } }
+      font-size: 1.8rem; }
     .appointment__info--footer {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: 500; }
-      @media only screen and (max-width: 37.5em) {
-        .appointment__info--footer {
-          font-size: 1.8rem; } }
   .appointment__data {
     min-height: 50vh;
     display: flex;
@@ -503,10 +497,7 @@ body {
         .appointment__data--date-calendar-picker {
           width: 100%;
           padding: 0;
-          font-size: 2.7rem; }
-          @media only screen and (max-width: 37.5em) {
-            .appointment__data--date-calendar-picker {
-              font-size: 2rem; } }
+          font-size: 2rem; }
       .appointment__data--date-times {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
@@ -517,21 +508,18 @@ body {
             font-size: 1.8rem; } }
         .appointment__data--date-times div {
           cursor: pointer;
-          padding: .5rem;
+          padding: 0.5rem;
           text-align: center; }
           .appointment__data--date-times div:hover {
             background-color: #D0BBAF; }
       .appointment__data--date p {
-        font-size: 3rem;
+        font-size: 2rem;
         width: 100%;
         text-align: left;
         display: flex;
         align-items: center;
         color: #3c2845;
         font-weight: 500; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--date p {
-            font-size: 2rem; } }
         .appointment__data--date p span {
           display: flex;
           align-items: center;
@@ -543,14 +531,11 @@ body {
           margin: 1rem;
           background-color: #D0BBAF; }
       .appointment__data--date label {
-        font-size: 4rem; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--date label {
-            font-size: 2.5rem; } }
+        font-size: 2rem; }
       .appointment__data--date input {
         text-align: center;
         min-width: 50%;
-        padding: 2rem;
+        padding: 1rem 2rem;
         font-size: 2rem; }
         @media only screen and (max-width: 37.5em) {
           .appointment__data--date input {
@@ -563,16 +548,13 @@ body {
       align-items: center;
       margin: 2rem; }
       .appointment__data--data p {
-        font-size: 3rem;
+        font-size: 2rem;
         width: 100%;
         text-align: left;
         display: flex;
         align-items: center;
         color: #3c2845;
         font-weight: 500; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--data p {
-            font-size: 2rem; } }
         .appointment__data--data p span {
           display: flex;
           align-items: center;
@@ -584,14 +566,11 @@ body {
           margin: 1rem;
           background-color: #D0BBAF; }
       .appointment__data--data label {
-        font-size: 4rem; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--data label {
-            font-size: 2.5rem; } }
+        font-size: 2rem; }
       .appointment__data--data input {
         text-align: center;
         min-width: 50%;
-        padding: 2rem;
+        padding: 1rem 2rem;
         font-size: 2rem; }
         @media only screen and (max-width: 37.5em) {
           .appointment__data--data input {
@@ -604,16 +583,13 @@ body {
       align-items: center;
       margin: 2rem; }
       .appointment__data--confirmation p {
-        font-size: 3rem;
+        font-size: 2rem;
         width: 100%;
         text-align: left;
         display: flex;
         align-items: center;
         color: #3c2845;
         font-weight: 500; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--confirmation p {
-            font-size: 2rem; } }
         .appointment__data--confirmation p span {
           display: flex;
           align-items: center;
@@ -625,14 +601,11 @@ body {
           margin: 1rem;
           background-color: #D0BBAF; }
       .appointment__data--confirmation label {
-        font-size: 4rem; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--confirmation label {
-            font-size: 2.5rem; } }
+        font-size: 2rem; }
       .appointment__data--confirmation input {
         text-align: center;
         min-width: 50%;
-        padding: 2rem;
+        padding: 1rem 2rem;
         font-size: 2rem; }
         @media only screen and (max-width: 37.5em) {
           .appointment__data--confirmation input {
@@ -640,10 +613,7 @@ body {
         .appointment__data--confirmation input:focus {
           outline: none; }
       .appointment__data--confirmation-header {
-        font-size: 6rem !important; }
-        @media only screen and (max-width: 37.5em) {
-          .appointment__data--confirmation-header {
-            font-size: 4rem !important; } }
+        font-size: 4rem !important; }
       .appointment__data--confirmation-each {
         font-size: 3rem;
         font-weight: 400; }
@@ -656,21 +626,17 @@ body {
       padding: 0 2rem; }
     .appointment__data--btn {
       width: 20%;
-      padding: 2rem 0;
+      padding: 1rem 0;
       border: none;
       border-radius: 3px;
       font-family: "Rajdhani", sans-serif;
-      font-size: 3rem;
+      font-size: 2rem;
       background-color: #23102B;
       color: white;
       cursor: pointer;
-      transition: background-color .3s; }
+      transition: background-color 0.3s; }
       .appointment__data--btn:hover {
         background-color: #3c2845; }
-      @media only screen and (max-width: 37.5em) {
-        .appointment__data--btn {
-          width: 30%;
-          font-size: 2rem; } }
   .appointment__confirmation {
     position: fixed;
     top: 0;
@@ -679,7 +645,7 @@ body {
     height: 100vh;
     z-index: 99;
     background-image: linear-gradient(to bottom right, #3c2845, #23102B);
-    animation: showUp .3s ease-out;
+    animation: showUp 0.3s ease-out;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -704,17 +670,14 @@ body {
       font-size: 5rem;
       text-transform: uppercase;
       font-weight: 300;
-      letter-spacing: .2rem; }
+      letter-spacing: 0.2rem; }
     .appointment__confirmation--content {
       display: block;
       margin: 5rem auto;
       font-family: "Rajdhani", sans-serif;
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: white;
       list-style: none; }
-      @media only screen and (max-width: 37.5em) {
-        .appointment__confirmation--content {
-          font-size: 2rem; } }
     .appointment__confirmation--button {
       display: block;
       border: none;
@@ -724,7 +687,7 @@ body {
       border-radius: 3px;
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9);
       cursor: pointer;
-      transition: all .3s ease-out;
+      transition: all 0.3s ease-out;
       font-family: "Rajdhani", sans-serif;
       font-size: 2.2rem; }
       .appointment__confirmation--button:hover {
@@ -1057,18 +1020,18 @@ body {
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: .5rem;
+  grid-gap: 0.5rem;
   background-color: #D0BBAF;
   transition: background-color 1s; }
   .footer__service--header {
     text-align: center;
     text-transform: uppercase;
     font-family: "Darker Grotesque", sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #3c2845; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 26.3em) {
       .footer__service--header {
-        font-size: 1.6rem; } }
+        display: none; } }
   .footer__service--list {
     list-style: none;
     display: flex;
@@ -1080,26 +1043,23 @@ body {
       align-items: center;
       justify-content: center;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #3c2845;
       cursor: pointer; }
       .footer__service--list-item span {
         border-bottom: 1px solid transparent;
-        transition: border .3s; }
+        transition: border 0.3s; }
       .footer__service--list-item:hover span {
         border-bottom: 1px solid #76687C; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__service--list-item {
-          font-size: 1.4rem; } }
   .footer__social--header {
     text-align: center;
     text-transform: uppercase;
     font-family: "Darker Grotesque", sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #3c2845; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 26.3em) {
       .footer__social--header {
-        font-size: 1.6rem; } }
+        display: none; } }
   .footer__social--list {
     list-style: none;
     display: flex;
@@ -1111,17 +1071,14 @@ body {
       align-items: center;
       justify-content: center;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #3c2845;
       cursor: pointer; }
       .footer__social--list-item span {
         border-bottom: 1px solid transparent;
-        transition: border .3s; }
+        transition: border 0.3s; }
       .footer__social--list-item:hover span {
         border-bottom: 1px solid #76687C; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__social--list-item {
-          font-size: 1.4rem; } }
     .footer__social--list-facebook {
       color: blue;
       font-size: 2.5rem; }
@@ -1144,11 +1101,11 @@ body {
     text-align: center;
     text-transform: uppercase;
     font-family: "Darker Grotesque", sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #3c2845; }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 26.3em) {
       .footer__legal--header {
-        font-size: 1.6rem; } }
+        display: none; } }
   .footer__legal--list {
     list-style: none;
     display: flex;
@@ -1160,17 +1117,14 @@ body {
       align-items: center;
       justify-content: center;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #3c2845;
       cursor: pointer; }
       .footer__legal--list-item span {
         border-bottom: 1px solid transparent;
-        transition: border .3s; }
+        transition: border 0.3s; }
       .footer__legal--list-item:hover span {
         border-bottom: 1px solid #76687C; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__legal--list-item {
-          font-size: 1.4rem; } }
 
 .legal {
   width: 100%;

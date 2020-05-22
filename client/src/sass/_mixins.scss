@@ -1,185 +1,168 @@
-@mixin headerFooter{
-	text-align: center;
-	text-transform: uppercase;
-	font-family: $font-grotesque;
-	font-size: 2rem;
-	color:$color-secondary;
+@mixin headerFooter {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $font-grotesque;
+    font-size: 2.5rem;
+    color: $color-secondary;
 
-	@include respond(s){
-		font-size: 1.6rem;
-	}
+    @include respond(xs) {
+        display: none;
+    }
 }
 
-@mixin listFooter{
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin:1rem 0;
+@mixin listFooter {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0;
 }
 
-@mixin paraFooter{
-	display:flex;
-	align-items: center;
-	justify-content: center;
-	font-family: $font-rajdhani;
-	font-size: 1.8rem;
-	color:$color-secondary;
-	cursor:pointer;
-	
-	span{
-		border-bottom: 1px solid transparent;
-		transition: border .3s;
-	}
+@mixin paraFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-rajdhani;
+    font-size: 2rem;
+    color: $color-secondary;
+    cursor: pointer;
 
-	&:hover{
+    span {
+        border-bottom: 1px solid transparent;
+        transition: border 0.3s;
+    }
 
-		span{
-			border-bottom: 1px solid $color-secondary-light;
-		}
-		
-	}
-
-	@include respond(s){
-		font-size: 1.4rem;
-	}
+    &:hover {
+        span {
+            border-bottom: 1px solid $color-secondary-light;
+        }
+    }
 }
 
-@mixin sectionHeader{
-	font-family: $font-grotesque;
-	font-size: 6rem;
-	font-weight: 400;
-	text-align: center;
-	text-transform: uppercase;
-	color:$color-secondary;
-	text-shadow: .5rem .5rem .5rem rgba($color-secondary,.5);
+@mixin sectionHeader {
+    font-family: $font-grotesque;
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba($color-secondary, 0.5);
 
-	@include respond(s){
-		font-size: 4rem;
-	}
+    @include respond(s) {
+        font-size: 4rem;
+    }
 }
 
 @mixin contactStyles($margin) {
-	&__address{
-		display:flex;
-		flex-direction: column;
-		align-items: center;
-		margin:$margin 0;
-		color:$color-secondary;
+    &__address {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: $margin 0;
+        color: $color-secondary;
 
-		&--name{
-			font-family: $font-grotesque;
-			font-size: 4.2rem;
+        &--name {
+            font-family: $font-grotesque;
+            font-size: 4.2rem;
+        }
 
-		}
+        &--street {
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+        }
 
-		&--street{
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-		}
+        &--city {
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+        }
 
-		&--city{
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-		}
+        &--tel {
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: $color-secondary;
+            text-decoration: none;
 
-		&--tel{
+            &:hover {
+                text-decoration: underline;
+            }
 
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			display:flex;
-			align-items: center;
-			cursor:pointer;
-			color:$color-secondary;
-			text-decoration: none;
+            &-icon {
+                color: $color-primary-dark;
+                margin: 1rem;
+                display: inline-block;
+                // animation: jump 2s ease-in infinite;
+            }
+        }
+        &--email {
+            font-family: $font-rajdhani;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            color: $color-primary-dark;
+            cursor: pointer;
+            text-decoration: none;
 
-			&:hover{
-				text-decoration: underline;
-			}
+            &:hover {
+                text-decoration: underline;
+            }
 
-			&-icon{
-				color:$color-primary-dark;
-				margin:1rem;
-				display:inline-block;
-				// animation: jump 2s ease-in infinite;
-			}
-		}
-		&--email{
-
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			display:flex;
-			align-items: center;
-			color:$color-primary-dark;
-			cursor:pointer;
-			text-decoration: none;
-			
-
-			&:hover{
-				text-decoration: underline;
-			}
-
-			&-icon{
-				color:$color-primary;
-				margin:1rem;
-				display:inline-block;
-				// animation: jump  2s ease-in infinite;
-				// animation-delay: 1s;
-			}
-		}
-	}
+            &-icon {
+                color: $color-primary;
+                margin: 1rem;
+                display: inline-block;
+                // animation: jump  2s ease-in infinite;
+                // animation-delay: 1s;
+            }
+        }
+    }
 }
 
-@mixin formData{
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	margin:2rem;
+@mixin formData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
 
-	p{
-		font-size: 3rem;
-		width:100%;
-		text-align: left;
-		display:flex;
-		align-items: center;
-		color:$color-secondary;
-		font-weight: 500;
+    p {
+        font-size: 2rem;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        color: $color-secondary;
+        font-weight: 500;
 
-		@include respond(s){
-			font-size: 2rem;
-		}
-		
-		span{
-			display:flex;
-			align-items: center;
-			justify-content: center;
-			width:5rem;
-			height:5rem;
-			border:1px solid $color-primary-light;
-			border-radius:50%;
-			margin:1rem;
-			background-color: $color-primary-light;
-		}
-	}
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            border: 1px solid $color-primary-light;
+            border-radius: 50%;
+            margin: 1rem;
+            background-color: $color-primary-light;
+        }
+    }
 
-	label{
-		font-size: 4rem;
-		@include respond(s){
-			font-size: 2.5rem;
-		}
-	}
-	input{
-		text-align: center;
-		min-width:50%;
-		padding:2rem;
-		font-size: 2rem;
+    label {
+        font-size: 2rem;
+    }
+    input {
+        text-align: center;
+        min-width: 50%;
+        padding: 1rem 2rem;
+        font-size: 2rem;
 
-		@include respond(s){
-			min-width:80%;
-		}
+        @include respond(s) {
+            min-width: 80%;
+        }
 
-		&:focus{
-			outline:none;
-		}
-	}
+        &:focus {
+            outline: none;
+        }
+    }
 }

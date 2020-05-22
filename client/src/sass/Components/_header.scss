@@ -1,147 +1,147 @@
-.header{
-	width:100%;
-	display:flex;
-	justify-content: space-between;
-	padding:1rem;
-	border-bottom: 1px solid $color-primary-light;
-	height:8rem;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index: 91;
-	margin-bottom: 5rem;
-	background-color: white;
-	transition:background-color 1s;
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid $color-primary-light;
+    height: 8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 91;
+    margin-bottom: 5rem;
+    background-color: white;
+    transition: background-color 1s;
 
-	@include respond(s){
-		height:6rem;
-		margin-bottom: 4rem;
-		padding:.2rem;
-	}
-	
-	&__left{
-		flex:0 0 20%;
-		display:flex;
-		justify-content: flex-start;
-		align-items: center;
+    @include respond(s) {
+        height: 6rem;
+        margin-bottom: 4rem;
+        padding: 0.2rem;
+    }
 
-		@include respond(s){
-			flex:0 0 33%;
-		}
+    &__left {
+        flex: 0 0 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 
-		&--link{
-			border-bottom:1px solid transparent;
-			font-family: $font-rajdhani;
-			font-size: 2.2rem;
-			color:$color-secondary-dark;
-			cursor:pointer;
-			margin:.5rem;
-			transition:border .3s;
-			margin-right: 2rem;
+        @include respond(s) {
+            flex: 0 0 33%;
+        }
 
-			&:hover{
-				border-bottom:1px solid rgba($color-secondary-light,.7);
-			}
+        &--link {
+            border-bottom: 1px solid transparent;
+            font-family: $font-rajdhani;
+            font-size: 2.2rem;
+            color: $color-secondary-dark;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: border 0.3s;
+            margin-right: 2rem;
 
-			@include respond(s){
-				margin:.2rem;
-				margin-right: .9rem;
-				font-size: 1.8rem;
-			}
-		}
-	}
+            &:hover {
+                border-bottom: 1px solid rgba($color-secondary-light, 0.7);
+            }
 
-	&__center{
+            @include respond(s) {
+                margin: 0.2rem;
+                margin-right: 0.9rem;
+                font-size: 1.8rem;
+            }
+        }
+    }
 
-		width:20%;
-		position:absolute;
-		top:20%;
-		left:50%;
-		transform:translate(-50%, 0);
-		display:flex;
-		justify-content: center;
+    &__center {
+        width: 20%;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: flex;
+        justify-content: center;
 
-		@include respond(s){
-			width:33%;
-			flex:auto;
-		}
+        @include respond(s) {
+            width: 33%;
+            flex: auto;
+        }
 
-		&--logo{
+        &--logo {
+            background-color: $color-primary-light;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            padding: 1rem 2.5rem;
+            line-height: 0.9;
+            box-shadow: 0 0.5rem 1rem rgba($color-primary-dark, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s;
 
-			background-color: $color-primary-light;
-			display:flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			border-radius: 3px;
-			padding: 1rem 2.5rem;
-			line-height:.9;
-			box-shadow: 0 .5rem 1rem rgba($color-primary-dark,.3);
-			cursor:pointer;
-			transition:background-color .3s;
+            &:hover {
+                background-color: darken($color-primary-light, 5%);
+            }
 
-			&:hover{
-				background-color:darken($color-primary-light,5%);
-				
-			}
+            @include respond(xs) {
+                padding: 0.75rem 1.5rem;
+            }
 
-			&-name{
-				font-family: $font-grotesque;
-				font-size: 8rem;
-				font-weight: 300;
-				color:$color-secondary;
-				text-transform: uppercase;
-				text-shadow: .2rem .2rem .5rem rgba($color-secondary-dark,.5);
+            &-name {
+                font-family: $font-grotesque;
+                font-size: 8rem;
+                font-weight: 300;
+                color: $color-secondary;
+                text-transform: uppercase;
+                text-shadow: 0.2rem 0.2rem 0.5rem
+                    rgba($color-secondary-dark, 0.5);
 
-				@include respond(s){
-					font-size: 6rem;
-				}
-			}
-			&-sub{
-				font-family: $font-garamond;
-				font-size: 2.6rem;
-				letter-spacing: .2rem;
-				font-weight: 300;
-				color:$color-secondary;
-				@include respond(s){
-					font-size: 2rem;
-				}
-			}
-			
-			
-		}
-	}
+                @include respond(s) {
+                    font-size: 6rem;
+                }
+            }
+            &-sub {
+                font-family: $font-garamond;
+                font-size: 2.6rem;
+                letter-spacing: 0.2rem;
+                font-weight: 300;
+                color: $color-secondary;
+                @include respond(s) {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
 
-	&__right{
-		flex:0 0 20%;
-		display:flex;
-		justify-content: flex-end;
-		align-items: center;
+    &__right {
+        flex: 0 0 20%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
 
-		@include respond(s){
-			flex:0 0 33%;
-			margin-right: .5rem;
-		}
+        @include respond(s) {
+            flex: 0 0 33%;
+            margin-right: 0.5rem;
+        }
 
-		&--link{
-			border-bottom:1px solid transparent;
-			font-family: $font-rajdhani;
-			font-size: 2.2rem;
-			color:$color-secondary-dark;
-			cursor:pointer;
-			margin:.5rem;
-			transition:border .3s;
-			margin-right: 2rem;
+        &--link {
+            border-bottom: 1px solid transparent;
+            font-family: $font-rajdhani;
+            font-size: 2.2rem;
+            color: $color-secondary-dark;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: border 0.3s;
+            margin-right: 2rem;
 
-			&:hover{
-				border-bottom:1px solid rgba($color-secondary-light,.7);
-			}
+            &:hover {
+                border-bottom: 1px solid rgba($color-secondary-light, 0.7);
+            }
 
-			@include respond(s){
-				margin:.2rem;
-				margin-right: 1rem;
-				font-size: 1.8rem;
-			}
-		}		
-	}
+            @include respond(s) {
+                margin: 0.2rem;
+                margin-right: 1rem;
+                font-size: 1.8rem;
+            }
+        }
+    }
 }

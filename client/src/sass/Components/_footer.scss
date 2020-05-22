@@ -1,83 +1,70 @@
-.footer{
-	margin:5rem 0 0 0;
-	padding:2rem;
-	display:grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: .5rem;
-	background-color: $color-primary-light;
-	transition:background-color 1s;
+.footer {
+    margin: 5rem 0 0 0;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+    background-color: $color-primary-light;
+    transition: background-color 1s;
 
-	&__service{
+    &__service {
+        &--header {
+            @include headerFooter;
+        }
+        &--list {
+            @include listFooter;
+            &-item {
+                @include paraFooter;
+            }
+        }
+    }
 
-		&--header{
-			@include headerFooter
-		}
-		&--list{
-			@include listFooter
+    &__social {
+        &--header {
+            @include headerFooter;
+        }
+        &--list {
+            @include listFooter;
+            &-item {
+                @include paraFooter;
+            }
 
-			&-item{
-				
-				@include paraFooter
+            &-facebook {
+                color: blue;
+                font-size: 2.5rem;
 
-			}
-		}
+                @include respond(s) {
+                    font-size: 1.8rem;
+                }
+            }
+            &-instagram {
+                color: $color-secondary;
+                font-size: 2.5rem;
 
-	}
+                @include respond(s) {
+                    font-size: 1.8rem;
+                }
+            }
+            &-twitter {
+                color: lighten(blue, 10%);
+                font-size: 2.5rem;
 
-	&__social{
+                @include respond(s) {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
 
-		&--header{
-			@include headerFooter
-		}
-		&--list{
-			@include listFooter
-
-			&-item{
-				
-				@include paraFooter
-
-			}
-
-			&-facebook{
-				color:blue;
-				font-size: 2.5rem;
-
-				@include respond(s){
-					font-size: 1.8rem;
-				}
-			}
-			&-instagram{
-				color:$color-secondary;
-				font-size: 2.5rem;
-
-				@include respond(s){
-					font-size: 1.8rem;
-				}
-			}
-			&-twitter{
-				color:lighten(blue,10%);
-				font-size: 2.5rem;
-
-				@include respond(s){
-					font-size: 1.8rem;
-				}
-			}
-		}
-
-	}
-
-	&__legal{
-		&--header{
-			@include headerFooter
-		}
-		&--list{
-			@include listFooter
-
-			&-item{
-				
-				@include paraFooter
-
-			}
-		}
-	}
+    &__legal {
+        &--header {
+            @include headerFooter;
+        }
+        &--list {
+            @include listFooter;
+            &-item {
+                @include paraFooter;
+            }
+        }
+    }
 }

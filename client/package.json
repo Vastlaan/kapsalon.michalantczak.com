@@ -1,41 +1,41 @@
 {
-  "name": "kapsalon",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "concurrently": "^4.1.2",
-    "dateformat": "^3.0.3",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-datepicker": "^2.15.0",
-    "react-day-picker": "^7.4.8",
-    "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1"
-  },
-  "proxy": "http://localhost:5000",
-  "scripts": {
-    "watch:sass": "node-sass src/sass/main.scss src/css/style.css -w",
-    "dev": "concurrently \"npm start\" \"npm run watch:sass\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "kapsalon",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "concurrently": "^4.1.2",
+        "dateformat": "^3.0.3",
+        "node-sass": "^4.14.1",
+        "react": "^16.13.1",
+        "react-datepicker": "^2.15.0",
+        "react-day-picker": "^7.4.8",
+        "react-dom": "^16.13.1",
+        "react-icons": "^3.10.0",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.4.1"
+    },
+    "proxy": "http://localhost:4450",
+    "scripts": {
+        "watch:sass": "node-sass src/sass/main.scss src/css/style.css -w",
+        "dev": "concurrently \"npm start\" \"npm run watch:sass\"",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

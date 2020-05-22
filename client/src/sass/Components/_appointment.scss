@@ -1,238 +1,202 @@
-.appointment{
+.appointment {
+    margin-top: 12rem;
 
-	margin-top: 12rem;
+    &__header {
+        @include sectionHeader;
+    }
+    &__info {
+        margin: 2rem auto;
+        font-family: $font-rajdhani;
+        padding: 2rem;
 
-	&__header{
-		@include sectionHeader
-	}
-	&__info{
-		margin:2rem auto;
-		font-family: $font-rajdhani;
-		padding:2rem;
+        &--header {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: $color-secondary-dark;
+        }
+        &--steps {
+            list-style: none;
+            margin: 2rem;
+            font-size: 1.8rem;
 
-		&--header{
+            &-each {
+            }
+        }
 
-			font-size: 4rem;
-			font-weight: 400;
-			color:$color-secondary-dark;
-			
-			@include respond(s){
-				font-size: 2.5rem;
-			}
-			
+        &--footer {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+    }
 
-		}
-		&--steps{
-			list-style: none;
-			margin:2rem;
-			font-size: 2.5rem;
+    &__data {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
 
-			@include respond(s){
-				font-size: 1.8rem;
-			}
+        font-family: $font-rajdhani;
 
-			&-each{
+        &--date {
+            &-calendar {
+                display: flex;
+                justify-content: center;
+                width: 50%;
 
-			}
-		}
+                @include respond(s) {
+                    width: 100%;
+                }
 
-		&--footer{
-			font-size: 2.5rem;
-			font-weight: 500;
+                &-picker {
+                    width: 100%;
+                    padding: 0;
+                    font-size: 2rem;
+                }
+            }
 
-			@include respond(s){
-				font-size: 1.8rem;
-			}
-		}
-	}
+            &-times {
+                display: grid;
+                grid-template-columns: repeat(8, 1fr);
+                grid-gap: 1rem;
+                font-size: 3rem;
 
-	&__data{
-		min-height:50vh;
-		display:flex;
-		flex-direction: column;
-		
-		font-family: $font-rajdhani;
+                @include respond(s) {
+                    font-size: 1.8rem;
+                }
 
-		&--date{
+                div {
+                    cursor: pointer;
+                    padding: 0.5rem;
+                    text-align: center;
 
-			&-calendar{
-				display:flex;
-				justify-content: center;
-				width:50%;
+                    &:hover {
+                        background-color: $color-primary-light;
+                    }
+                }
+            }
+            @include formData;
+        }
 
-				@include respond(s){
-					width:100%;
-				}
+        &--data {
+            @include formData;
+        }
+        &--confirmation {
+            @include formData;
+            &-header {
+                font-size: 4rem !important;
+            }
 
-				&-picker{
-					width:100%;
-					padding:0;
-					font-size: 2.7rem;
+            &-each {
+                font-size: 3rem;
+                font-weight: 400;
+                @include respond(s) {
+                    font-size: 2rem;
+                }
+                span {
+                }
+            }
+        }
 
-					@include respond(s){
-						font-size: 2rem;
-					}
-				}
-			}
+        &--buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
 
-			&-times{
-				display: grid;
-				grid-template-columns: repeat(8,1fr);
-				grid-gap: 1rem;
-				font-size: 3rem;
+        &--btn {
+            // display:block;
+            width: 20%;
+            padding: 1rem 0;
+            border: none;
+            border-radius: 3px;
+            font-family: $font-rajdhani;
+            font-size: 2rem;
+            background-color: $color-secondary-dark;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
 
-				@include respond(s){
-					font-size: 1.8rem;
-				}
+            &:hover {
+                background-color: $color-secondary;
+            }
+        }
+    }
 
-				div{
-					cursor:pointer;
-					padding:.5rem;
-					text-align: center;
+    &__confirmation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99;
+        background-image: linear-gradient(
+            to bottom right,
+            rgba($color-secondary, 1),
+            $color-secondary-dark
+        );
+        animation: showUp 0.3s ease-out;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-					&:hover{
-						background-color: $color-primary-light;
-					}
-				}
-			}
-			@include formData
+        &--close {
+            position: absolute;
+            top: 5rem;
+            right: 5rem;
+            width: 5rem;
+            height: 5rem;
+            font-size: 3.5rem;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+        }
+        &--header {
+            margin: 0;
+            text-align: center;
+            color: white;
+            font-family: $font-garamond;
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+        }
 
+        &--content {
+            display: block;
+            margin: 5rem auto;
+            font-family: $font-rajdhani;
+            font-size: 2rem;
+            color: white;
+            list-style: none;
+        }
 
-		}
+        &--button {
+            display: block;
+            border: none;
+            background-color: $color-primary-light;
+            color: $color-secondary-dark;
+            padding: 1rem 3rem;
+            border-radius: 3px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            font-family: $font-rajdhani;
+            font-size: 2.2rem;
 
-		&--data{
-			@include formData
-		}
-		&--confirmation{
-			@include formData
+            &:hover {
+                transform: translateY(-0.3rem);
+                box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+            }
 
-			&-header{
-				font-size: 6rem !important; 
-
-				@include respond(s){
-					font-size: 4rem !important;
-				}
-			}
-
-			&-each{
-				font-size: 3rem;
-				font-weight: 400;
-				@include respond(s){
-					font-size: 2rem;
-				}
-				span{
-
-				}
-			}
-		}
-
-		&--buttons{
-			display:flex;
-			justify-content: space-between;
-			padding:0 2rem;
-		}
-
-		&--btn{
-			// display:block;
-			width:20%;
-			padding:2rem 0;
-			border:none;
-			border-radius: 3px;
-			font-family: $font-rajdhani;
-			font-size: 3rem;
-			background-color: $color-secondary-dark;
-			color:white;
-			cursor:pointer;
-			transition:background-color .3s;
-
-			&:hover{
-				background-color: $color-secondary;
-			}
-
-			@include respond(s){
-				width:30%;
-				font-size: 2rem;
-			}
-		}
-	}
-
-	&__confirmation{
-		position:fixed;
-		top:0;
-		left:0;
-		width:100vw;
-		height:100vh;
-		z-index: 99;
-		background-image: linear-gradient(to bottom right, rgba($color-secondary,1), $color-secondary-dark);
-		animation:showUp .3s ease-out;
-		overflow-y:scroll;
-		display:flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		
-		&--close{
-			position:absolute;
-			top:5rem;
-			right:5rem;
-			width:5rem;
-			height:5rem;
-			font-size: 3.5rem;
-			color:white;
-			cursor:pointer;
-			display:flex;
-			justify-content: center;
-		}
-		&--header{
-			margin: 0;
-			text-align: center;
-			color:white;
-			font-family: $font-garamond;
-			font-size: 5rem;
-			text-transform: uppercase;
-			font-weight: 300;
-			letter-spacing: .2rem;
-
-		}
-
-		&--content{
-			display:block;
-			margin:5rem auto;
-			font-family: $font-rajdhani;
-			font-size: 2.5rem;
-			color:white;
-			list-style: none;
-
-			@include respond(s){
-				font-size: 2rem;
-			}
-		}
-
-		&--button{
-			display:block;
-			border:none;
-			background-color: $color-primary-light;
-			color:$color-secondary-dark;
-			padding: 1rem 3rem;
-			border-radius: 3px;
-			box-shadow: 0 .5rem 1rem rgba(0,0,0,.9);
-			cursor:pointer;
-			transition: all .3s ease-out;
-			font-family: $font-rajdhani;
-			font-size: 2.2rem;
-
-			&:hover{
-				transform:translateY(-.3rem);
-				box-shadow: 0 1rem 1rem rgba(0,0,0,.3);
-			}
-
-			&:focus{
-				transform:translateY(-.2rem);
-				outline:none;
-			}
-		}
-	}
+            &:focus {
+                transform: translateY(-0.2rem);
+                outline: none;
+            }
+        }
+    }
 }
-#next{
-	margin:0 0 0 auto;
+#next {
+    margin: 0 0 0 auto;
 }
