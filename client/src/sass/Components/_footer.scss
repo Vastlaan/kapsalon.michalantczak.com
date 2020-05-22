@@ -32,26 +32,14 @@
             &-facebook {
                 color: blue;
                 font-size: 2.5rem;
-
-                @include respond(s) {
-                    font-size: 1.8rem;
-                }
             }
             &-instagram {
                 color: $color-secondary;
                 font-size: 2.5rem;
-
-                @include respond(s) {
-                    font-size: 1.8rem;
-                }
             }
             &-twitter {
                 color: lighten(blue, 10%);
                 font-size: 2.5rem;
-
-                @include respond(s) {
-                    font-size: 1.8rem;
-                }
             }
         }
     }
