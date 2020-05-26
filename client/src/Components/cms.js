@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MdClose } from "react-icons/md";
 
 export default class Cms extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export default class Cms extends Component {
             email: "",
             password: "",
             prices: [],
+            confirmation: false,
         };
     }
     fetchData = async () => {
@@ -77,7 +79,13 @@ export default class Cms extends Component {
             body: JSON.stringify(this.state.prices),
         })
             .then((res) => res.json())
-            .then((confirmation) => console.log(confirmation))
+            .then((confirmation) => {
+                if (confirmation === "Succes") {
+                    this.setState({
+                        confirmation: true,
+                    });
+                }
+            })
             .catch((e) => console.log(e));
     };
 
@@ -100,12 +108,18 @@ export default class Cms extends Component {
     //     console.log(result.token);
     // };
     render() {
-        const { logged } = this.state;
+        const { logged, confirmation } = this.state;
 
         return (
             <section className="cms">
                 {logged ? (
                     <div className="cms__manager">
+                        <button
+                            className="cms__manager--logout"
+                            onClick={() => this.setState({ logged: false })}
+                        >
+                            Uitloggen
+                        </button>
                         <h1>Update Prijzen</h1>
                         {this.state.prices.map((item) => {
                             return (
@@ -171,6 +185,9 @@ export default class Cms extends Component {
                                         password: event.target.value,
                                     })
                                 }
+                                onKeyDown={(e) =>
+                                    e.keyCode === 13 ? this.loginClient() : null
+                                }
                             />
                         </div>
                         <button onClick={this.loginClient}>Inloggen</button>
@@ -180,6 +197,29 @@ export default class Cms extends Component {
                         </button> */}
                     </div>
                 )}
+                {confirmation ? (
+                    <div className="cms__confirmation">
+                        <button
+                            className="cms__confirmation--close"
+                            onClick={() =>
+                                this.setState({ confirmation: false })
+                            }
+                        >
+                            <MdClose />
+                        </button>
+                        <h1 className="cms__confirmation--text">
+                            u heeft uw inhoud met succes bijgewerkt
+                        </h1>
+                        <button
+                            className="cms__confirmation--ok"
+                            onClick={() =>
+                                this.setState({ confirmation: false })
+                            }
+                        >
+                            Ok
+                        </button>
+                    </div>
+                ) : null}
             </section>
         );
     }
