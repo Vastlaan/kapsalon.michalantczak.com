@@ -1,0 +1,13 @@
+.error {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+        font-family: $font-rajdhani;
+        color: $color-secondary-dark;
+        font-size: 4rem;
+    }
+}

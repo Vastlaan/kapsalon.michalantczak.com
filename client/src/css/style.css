@@ -31,7 +31,6 @@ html {
 
 body {
   width: 100vw;
-  height: 100rem;
   transition: background-color 1s; }
 
 .App {
@@ -532,6 +531,9 @@ body {
           background-color: #D0BBAF; }
       .appointment__data--date label {
         font-size: 2rem; }
+      .appointment__data--date h6 {
+        color: red;
+        font-size: 1.6rem; }
       .appointment__data--date input {
         text-align: center;
         min-width: 50%;
@@ -567,6 +569,9 @@ body {
           background-color: #D0BBAF; }
       .appointment__data--data label {
         font-size: 2rem; }
+      .appointment__data--data h6 {
+        color: red;
+        font-size: 1.6rem; }
       .appointment__data--data input {
         text-align: center;
         min-width: 50%;
@@ -602,6 +607,9 @@ body {
           background-color: #D0BBAF; }
       .appointment__data--confirmation label {
         font-size: 2rem; }
+      .appointment__data--confirmation h6 {
+        color: red;
+        font-size: 1.6rem; }
       .appointment__data--confirmation input {
         text-align: center;
         min-width: 50%;
@@ -620,6 +628,10 @@ body {
         @media only screen and (max-width: 37.5em) {
           .appointment__data--confirmation-each {
             font-size: 2rem; } }
+      .appointment__data--confirmation-declare {
+        color: red !important;
+        font-size: 1.6rem !important;
+        text-align: center !important; }
     .appointment__data--buttons {
       display: flex;
       justify-content: space-between;
@@ -1082,21 +1094,12 @@ body {
     .footer__social--list-facebook {
       color: blue;
       font-size: 2.5rem; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__social--list-facebook {
-          font-size: 1.8rem; } }
     .footer__social--list-instagram {
       color: #3c2845;
       font-size: 2.5rem; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__social--list-instagram {
-          font-size: 1.8rem; } }
     .footer__social--list-twitter {
       color: #3333ff;
       font-size: 2.5rem; }
-      @media only screen and (max-width: 37.5em) {
-        .footer__social--list-twitter {
-          font-size: 1.8rem; } }
   .footer__legal--header {
     text-align: center;
     text-transform: uppercase;
@@ -1137,3 +1140,92 @@ body {
     text-align: center;
     text-shadow: 0.5rem 0.5rem 1rem rgba(208, 187, 175, 0.3);
     text-transform: uppercase; }
+
+.error {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .error h1 {
+    font-family: "Rajdhani", sans-serif;
+    color: #23102B;
+    font-size: 4rem; }
+
+.cms {
+  margin-top: 15rem;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .cms__login--header {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 2rem;
+    color: #23102B;
+    text-align: center; }
+    .cms__login--header h1 {
+      font-weight: 300; }
+    .cms__login--header h3 {
+      font-weight: 400; }
+  .cms__login--email, .cms__login--password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 2rem; }
+    .cms__login--email label, .cms__login--password label {
+      min-width: 10rem; }
+    .cms__login--email input, .cms__login--password input {
+      padding: 1rem 3rem; }
+  .cms__login button {
+    padding: 1rem 3rem;
+    border: none;
+    background-color: #3c2845;
+    color: white;
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 2.5rem; }
+  .cms__manager {
+    width: 90%;
+    margin: 0 auto; }
+    .cms__manager h1 {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 3rem;
+      color: #673633;
+      text-align: center;
+      text-transform: uppercase; }
+    .cms__manager--field {
+      width: 100%;
+      margin: 2rem;
+      display: flex; }
+      @media only screen and (max-width: 37.5em) {
+        .cms__manager--field {
+          flex-direction: column; } }
+      .cms__manager--field-name {
+        width: 70%; }
+        @media only screen and (max-width: 37.5em) {
+          .cms__manager--field-name {
+            width: 100%; } }
+      .cms__manager--field input {
+        border: 1px solid #7E1F14;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+        padding: 1rem 3rem;
+        margin-right: 1rem; }
+        @media only screen and (max-width: 37.5em) {
+          .cms__manager--field input {
+            width: auto;
+            margin: 1rem; } }
+    .cms__manager--button {
+      display: block;
+      margin: 2rem auto;
+      padding: 1rem 3rem;
+      background-color: #23102B;
+      color: white;
+      border: none;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2rem; }
+      .cms__manager--button:focus {
+        outline: none; }

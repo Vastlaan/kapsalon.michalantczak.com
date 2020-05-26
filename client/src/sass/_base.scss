@@ -1,46 +1,43 @@
-::-webkit-scrollbar{
-	display:none;
+::-webkit-scrollbar {
+    display: none;
 }
 
 *,
 *::after,
-*::before{
-	margin: 0;
-	padding:0;
-	box-sizing: inherit;
-	scrollbar-width: none;	//mozilla scrollbar hidden
-
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    scrollbar-width: none; //mozilla scrollbar hidden
 }
 
-html{
-	box-sizing: border-box;
-	font-size: 62.5%;
-	line-height: 1.6;
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    line-height: 1.6;
 
-	@include respond(l){
-		font-size: 55%;
-	}
-	@include respond(m) {
-		font-size: 50%;
-	}
-	@include respond(s) {
-		font-size: 45%;
-	}
-	@include respond(xs) {
-		font-size: 40%;
-	}
-	@include respond(xxl) {
-		font-size: 100%;
-	}
-
+    @include respond(l) {
+        font-size: 55%;
+    }
+    @include respond(m) {
+        font-size: 50%;
+    }
+    @include respond(s) {
+        font-size: 45%;
+    }
+    @include respond(xs) {
+        font-size: 40%;
+    }
+    @include respond(xxl) {
+        font-size: 100%;
+    }
 }
 
-body{
-	width:100vw;
-	height:100rem;	//test
-	transition:background-color 1s;
+body {
+    width: 100vw;
+    transition: background-color 1s;
 }
 
-.App{
-	width:100%;
+.App {
+    width: 100%;
 }
