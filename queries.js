@@ -1,6 +1,7 @@
 const Pool = require("pg").Pool;
 const keys = require("./config/keys");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const parse = require("pg-connection-string").parse;
 
 let pool;
@@ -47,7 +48,21 @@ const createAppointment = (req, res) => {
     );
 };
 
-const loginClient = (req, res) => {
+const loginClient = async (req, res) => {
+    //check if login token exists
+    if (req.headers["authorization"]) {
+        const token = req.headers["authorization"].split(" ")[1];
+
+        try {
+            const result = await jwt.verify(token, keys.JWT_SECRET);
+            if (result.client) {
+                return res.status(200).json({ token });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const { email, password } = req.body;
 
     pool.query(
@@ -67,7 +82,12 @@ const loginClient = (req, res) => {
             }
             const hash = result.rows[0].hash;
             if (bcrypt.compareSync(password, hash)) {
-                return res.status(200).json({ token: "foifj390i" });
+                const token = jwt.sign(
+                    { client: result.rows[0] },
+                    keys.JWT_SECRET,
+                    { expiresIn: "1d" }
+                );
+                return res.status(200).json({ token });
             } else {
                 return res.status(400).json({ error: "wrong credentials" });
             }
@@ -89,10 +109,34 @@ const getPrices = (req, res) => {
 };
 
 const updatePrices = async (req, res) => {
-    //USE TRANSACTIONS FOR MULTIPLE OPERATIONS ON DATABASE
-
     // assign request body to the variable data
     const data = req.body;
+
+    //set flag
+    let next = false;
+
+    //first verify user token
+    if (!req.headers["authorization"]) {
+        return res.status(403).json({ error: "Acces forbidden" });
+    }
+    const token = req.headers["authorization"].split(" ")[1];
+
+    try {
+        const result = await jwt.verify(token, keys.JWT_SECRET);
+        if (result.client) {
+            next = true;
+        }
+    } catch (e) {
+        console.log(e);
+
+        return res.status(403).json({ error: "Acces forbidden" });
+    }
+
+    if (!next) {
+        return res.status(403).json({ error: "Acces forbidden" });
+    }
+    //USE TRANSACTIONS FOR MULTIPLE OPERATIONS ON DATABASE
+
     // note: we don't try/catch this because if connecting throws an exception
     // we don't need to dispose of the client (it will be undefined)
     const client = await pool.connect();
@@ -127,10 +171,22 @@ const updatePrices = async (req, res) => {
     }
 };
 
+const getPhotos = (req, res) => {
+    pool.query("SELECT * FROM photos", (err, result) => {
+        if (err) {
+            res.status(400).json({ error: "Something went wrong" });
+            throw err;
+        }
+        const data = result.rows;
+        return res.status(200).json(data);
+    });
+};
+
 module.exports = {
     getAppointments,
     createAppointment,
     loginClient,
     getPrices,
     updatePrices,
+    getPhotos,
 };

@@ -12,6 +12,27 @@ export default class Cms extends Component {
             confirmation: false,
         };
     }
+
+    componentWillMount() {
+        if (window.localStorage.getItem("kapsalonToken")) {
+            const token = window.localStorage.getItem("kapsalonToken");
+            fetch("/api/loginClient", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+                .then((res) => res.json())
+                .then((tkn) => {
+                    if (tkn.token === token) {
+                        this.fetchData();
+                        return this.setState({ logged: true });
+                    }
+                })
+                .catch((e) => console.log(e));
+        }
+    }
     fetchData = async () => {
         const response = await fetch("/api/getPrices");
         const content = await response.json();
@@ -40,7 +61,9 @@ export default class Cms extends Component {
             const result = await response.json();
             if (result.error) {
                 return console.log(result.error);
-            } else if (result.token === "foifj390i") {
+            } else if (result.token) {
+                window.localStorage.setItem("kapsalonToken", result.token);
+
                 this.fetchData();
                 return this.setState({
                     logged: true,
@@ -71,9 +94,11 @@ export default class Cms extends Component {
     };
 
     updateAllPrices = () => {
+        const token = window.localStorage.getItem("kapsalonToken");
         fetch("/api/updatePrices", {
             method: "POST",
             headers: {
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(this.state.prices),

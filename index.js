@@ -18,6 +18,8 @@ app.get("/api/getPrices", db.getPrices);
 
 app.post("/api/updatePrices", db.updatePrices);
 
+app.get("/api/getPhotos", db.getPhotos);
+
 //app.post("/api/createClient", db.createClient);
 
 if (process.env.NODE_ENV === "production") {
