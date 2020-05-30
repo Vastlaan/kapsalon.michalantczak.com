@@ -170,3 +170,23 @@
         }
     }
 }
+
+@mixin buttonCMS {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 3rem;
+    background-color: $color-secondary-dark;
+    color: white;
+    border: none;
+    font-family: $font-rajdhani;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: $color-secondary;
+    }
+    &:focus {
+        outline: none;
+    }
+}

@@ -4,8 +4,6 @@ const db = require("./queries.js");
 
 const app = express();
 
-console.log(process.env.NODE_ENV);
-
 app.use(bodyParser.json());
 
 app.get("/api/appointments", db.getAppointments);
@@ -16,9 +14,18 @@ app.post("/api/loginClient", db.loginClient);
 
 app.get("/api/getPrices", db.getPrices);
 
-app.post("/api/updatePrices", db.updatePrices);
+app.post("/api/updatePrices", db.verifyToken, db.updatePrices);
+
+app.post("/api/deletePhoto", db.verifyToken, db.deletePhoto);
 
 app.get("/api/getPhotos", db.getPhotos);
+
+app.post(
+    "/api/uploadPhoto",
+    db.verifyToken,
+    db.useMulterUpload(),
+    db.uploadPhoto
+);
 
 //app.post("/api/createClient", db.createClient);
 

@@ -16,8 +16,6 @@ const Prices = () => {
             .catch((e) => console.log(e));
     }, []);
 
-    console.log(prices);
-
     return (
         <section className="prices">
             <header className="prices__header">Prijzen</header>

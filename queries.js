@@ -2,6 +2,9 @@ const Pool = require("pg").Pool;
 const keys = require("./config/keys");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const aws = require("aws-sdk");
 const parse = require("pg-connection-string").parse;
 
 let pool;
@@ -12,6 +15,26 @@ pool = new Pool({
     database: keys.DATABASE_NAME,
     password: keys.DATABASE_SECRET,
     port: keys.DATABASE_PORT,
+});
+
+aws.config.update({
+    accessKeyId: keys.AWS_KEY_ID,
+    secretAccessKey: keys.AWS_SECRET,
+    region: "eu-west-3",
+});
+const s3 = new aws.S3();
+
+const upload = multer();
+
+var uploadS3 = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: "kapsalonmichalantczak",
+        key: function (req, file, cb) {
+            cb(null, `haircut-${Date.now().toString()}.png`);
+        },
+    }),
+    contentType: "image/png",
 });
 
 // to create table in database use:
@@ -60,6 +83,9 @@ const loginClient = async (req, res) => {
             }
         } catch (e) {
             console.log(e);
+            return res.status(400).json({
+                error: "token expired",
+            });
         }
     }
 
@@ -112,29 +138,6 @@ const updatePrices = async (req, res) => {
     // assign request body to the variable data
     const data = req.body;
 
-    //set flag
-    let next = false;
-
-    //first verify user token
-    if (!req.headers["authorization"]) {
-        return res.status(403).json({ error: "Acces forbidden" });
-    }
-    const token = req.headers["authorization"].split(" ")[1];
-
-    try {
-        const result = await jwt.verify(token, keys.JWT_SECRET);
-        if (result.client) {
-            next = true;
-        }
-    } catch (e) {
-        console.log(e);
-
-        return res.status(403).json({ error: "Acces forbidden" });
-    }
-
-    if (!next) {
-        return res.status(403).json({ error: "Acces forbidden" });
-    }
     //USE TRANSACTIONS FOR MULTIPLE OPERATIONS ON DATABASE
 
     // note: we don't try/catch this because if connecting throws an exception
@@ -182,6 +185,66 @@ const getPhotos = (req, res) => {
     });
 };
 
+const verifyToken = async (req, res, next) => {
+    //first verify user token
+    if (!req.headers["authorization"]) {
+        return res.status(403).json({ error: "Access forbidden" });
+    }
+    const token = req.headers["authorization"].split(" ")[1];
+
+    try {
+        const result = await jwt.verify(token, keys.JWT_SECRET);
+        if (result.client) {
+            next();
+        }
+    } catch (e) {
+        console.log(e);
+
+        return res.status(403).json({ error: "Access forbidden" });
+    }
+
+    if (!next) {
+        return res.status(403).json({ error: "Access forbidden" });
+    }
+};
+
+const useMulterUpload = () => {
+    return uploadS3.array("file", 1);
+};
+
+const uploadPhoto = async (req, res) => {
+    const url = req.files[0].location;
+    const category = req.body.category;
+
+    try {
+        const result = await pool.query(
+            `INSERT INTO photos (url, category) values ($1, $2)`,
+            [`${url}`, `${category}`]
+        );
+        if (result.rows) {
+            return res.status(200).json({ succes: "Succes" });
+        }
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ error: "Something went wrong" });
+    }
+};
+
+const deletePhoto = (req, res) => {
+    const { name } = req.body;
+    pool.query(
+        "DELETE FROM photos WHERE url = $1",
+        [`${name}`],
+        (error, result) => {
+            if (error) {
+                return res.status(400).json({ error });
+            }
+
+            return res.status(200).json({ succes: "succes" });
+        }
+    );
+};
+
 module.exports = {
     getAppointments,
     createAppointment,
@@ -189,4 +252,8 @@ module.exports = {
     getPrices,
     updatePrices,
     getPhotos,
+    uploadPhoto,
+    verifyToken,
+    useMulterUpload,
+    deletePhoto,
 };

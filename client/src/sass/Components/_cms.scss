@@ -104,24 +104,106 @@
             }
         }
 
-        &--button {
-            display: block;
+        &--newPhoto {
             margin: 2rem auto;
-            padding: 1rem 3rem;
-            background-color: $color-secondary-dark;
-            color: white;
-            border: none;
             font-family: $font-rajdhani;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
+            color: $color-primary-dark;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-            &:hover {
-                background-color: $color-secondary;
+            h3 {
+                font-size: 3rem;
+                font-weight: 400;
             }
-            &:focus {
-                outline: none;
+            h4 {
+                font-size: 2.5rem;
+                text-align: center;
+                font-weight: 400;
             }
+
+            &-file {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 2rem auto;
+                padding: 2rem;
+
+                h5 {
+                    font-size: 1.5rem;
+                    color: $color-tertiary;
+                    text-align: center;
+                    font-weight: 400;
+                    margin-bottom: 2rem;
+                }
+
+                input {
+                    height: 0;
+                    visibility: hidden;
+                }
+                label {
+                    font-size: 5rem;
+                    cursor: pointer;
+                }
+            }
+
+            &-category {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 2rem auto;
+                padding: 2rem;
+
+                input {
+                }
+                label {
+                    margin: 1rem;
+                    font-size: 2rem;
+                }
+            }
+            &-outcome {
+                background-color: $color-tertiary;
+                color: white;
+                padding: 1rem 3rem;
+                border-radius: 3px;
+                p {
+                    font-size: 2rem;
+                    font-weight: 400;
+                }
+            }
+
+            button {
+                @include buttonCMS;
+            }
+        }
+
+        &--gallery {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1rem;
+
+            @include respond(s) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            &-each {
+                img {
+                    width: 100%;
+                }
+                button {
+                    @include buttonCMS;
+                }
+            }
+        }
+
+        &--button {
+            @include buttonCMS;
+        }
+    }
+
+    &__gallery {
+        h1 {
         }
     }
 
@@ -164,6 +246,7 @@
             font-size: 3rem;
             letter-spacing: 0.2rem;
             font-weight: 400;
+            text-align: center;
         }
         &--ok {
             margin: 2rem auto;

@@ -872,7 +872,7 @@ body {
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: all .2s;
+      transition: all 0.2s;
       position: relative; }
       .gallery__album--main::after {
         display: block;
@@ -944,7 +944,7 @@ body {
           display: block; }
       .gallery__album--main-photo {
         max-width: 100%;
-        max-height: 50vh;
+        height: 45vh;
         box-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
         border: 2px solid #23102B;
         border-radius: 3px;
@@ -961,9 +961,9 @@ body {
       .gallery__album--collection-photo {
         border: 2px solid black;
         height: 10vh;
-        margin: 0 .2rem;
+        margin: 0 0.2rem;
         cursor: pointer;
-        transition: all .3s;
+        transition: all 0.3s;
         border-radius: 3px; }
         .gallery__album--collection-photo:hover {
           transform: scale(1.1); }
@@ -1007,7 +1007,7 @@ body {
       font-size: 5rem;
       color: #DCDCDC;
       cursor: pointer;
-      transition: all .3s; }
+      transition: all 0.3s; }
       .gallery__full--previous:hover {
         transform: scale(1.1);
         color: white; }
@@ -1020,7 +1020,7 @@ body {
       font-size: 5rem;
       color: #DCDCDC;
       cursor: pointer;
-      transition: all .3s; }
+      transition: all 0.3s; }
       .gallery__full--next:hover {
         transform: scale(1.1);
         color: white; }
@@ -1234,6 +1234,95 @@ body {
             width: auto;
             margin: 1rem;
             padding: 0.5rem; } }
+    .cms__manager--newPhoto {
+      margin: 2rem auto;
+      font-family: "Rajdhani", sans-serif;
+      color: #673633;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .cms__manager--newPhoto h3 {
+        font-size: 3rem;
+        font-weight: 400; }
+      .cms__manager--newPhoto h4 {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 400; }
+      .cms__manager--newPhoto-file {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem auto;
+        padding: 2rem; }
+        .cms__manager--newPhoto-file h5 {
+          font-size: 1.5rem;
+          color: #7E1F14;
+          text-align: center;
+          font-weight: 400;
+          margin-bottom: 2rem; }
+        .cms__manager--newPhoto-file input {
+          height: 0;
+          visibility: hidden; }
+        .cms__manager--newPhoto-file label {
+          font-size: 5rem;
+          cursor: pointer; }
+      .cms__manager--newPhoto-category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem auto;
+        padding: 2rem; }
+        .cms__manager--newPhoto-category label {
+          margin: 1rem;
+          font-size: 2rem; }
+      .cms__manager--newPhoto-outcome {
+        background-color: #7E1F14;
+        color: white;
+        padding: 1rem 3rem;
+        border-radius: 3px; }
+        .cms__manager--newPhoto-outcome p {
+          font-size: 2rem;
+          font-weight: 400; }
+      .cms__manager--newPhoto button {
+        display: block;
+        margin: 2rem auto;
+        padding: 1rem 3rem;
+        background-color: #23102B;
+        color: white;
+        border: none;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s; }
+        .cms__manager--newPhoto button:hover {
+          background-color: #3c2845; }
+        .cms__manager--newPhoto button:focus {
+          outline: none; }
+    .cms__manager--gallery {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1rem; }
+      @media only screen and (max-width: 37.5em) {
+        .cms__manager--gallery {
+          grid-template-columns: repeat(2, 1fr); } }
+      .cms__manager--gallery-each img {
+        width: 100%; }
+      .cms__manager--gallery-each button {
+        display: block;
+        margin: 2rem auto;
+        padding: 1rem 3rem;
+        background-color: #23102B;
+        color: white;
+        border: none;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s; }
+        .cms__manager--gallery-each button:hover {
+          background-color: #3c2845; }
+        .cms__manager--gallery-each button:focus {
+          outline: none; }
     .cms__manager--button {
       display: block;
       margin: 2rem auto;
@@ -1283,7 +1372,8 @@ body {
       text-transform: uppercase;
       font-size: 3rem;
       letter-spacing: 0.2rem;
-      font-weight: 400; }
+      font-weight: 400;
+      text-align: center; }
     .cms__confirmation--ok {
       margin: 2rem auto;
       padding: 1rem 3rem;
