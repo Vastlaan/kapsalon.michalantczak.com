@@ -24,19 +24,6 @@ aws.config.update({
 });
 const s3 = new aws.S3();
 
-const upload = multer();
-
-var uploadS3 = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: "kapsalonmichalantczak",
-        key: function (req, file, cb) {
-            cb(null, `haircut-${Date.now().toString()}.png`);
-        },
-    }),
-    contentType: "image/png",
-});
-
 // to create table in database use:
 //create table appointments (id serial primary key, date varchar (15), time varchar (10), name varchar (100),email varchar (100), phone varchar (100) );
 
@@ -209,6 +196,16 @@ const verifyToken = async (req, res, next) => {
 };
 
 const useMulterUpload = () => {
+    const uploadS3 = multer({
+        storage: multerS3({
+            s3: s3,
+            bucket: "kapsalonmichalantczak",
+            key: function (req, file, cb) {
+                cb(null, `haircut-${Date.now().toString()}.png`);
+            },
+        }),
+        contentType: "image/png",
+    });
     return uploadS3.array("file", 1);
 };
 
@@ -239,8 +236,17 @@ const deletePhoto = (req, res) => {
             if (error) {
                 return res.status(400).json({ error });
             }
-
-            return res.status(200).json({ succes: "succes" });
+            const params = {
+                Bucket: "kapsalonmichalantczak",
+                Key: name.split(".com/")[1],
+            };
+            console.log(result.rows, name.split(".com/")[1]);
+            s3.deleteObject(params, function (error, data) {
+                if (error) {
+                    return res.status(403).json({ error });
+                }
+                return res.status(200).json({ succes: data });
+            });
         }
     );
 };
